@@ -498,7 +498,7 @@ function calculateResults() {
                     style="background-color: white; color: var(--color-burgundy); padding: 12px 24px; border: 1px solid var(--color-burgundy); border-radius: 5px; cursor: pointer;">
                     Start Over
                 </button>
-                <a href="/consultation" 
+                <a href="../consultant.php" 
                     style="background-color: var(--color-burgundy); color: white; padding: 12px 24px; border: none; border-radius: 5px; text-decoration: none; display: inline-block;">
                     Book a Consultation
                 </a>
@@ -506,7 +506,7 @@ function calculateResults() {
         </div>
     `;
 
-    document.querySelector('.calculator-container').innerHTML = resultsHtml;
+    document.getElementById('formSteps').innerHTML = resultsHtml;
 }
 
 function generateEligibilitySummary(score) {
@@ -594,7 +594,7 @@ function resetCalculator() {
         financialResources: ''
     };
     currentStep = 1;
-    document.querySelector('.calculator-container').innerHTML = '';
+    document.getElementById('formSteps').innerHTML = '';
     renderStep();
     updateProgress();
 }
