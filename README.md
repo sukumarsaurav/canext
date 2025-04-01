@@ -1,4 +1,4 @@
-# EasyBorders Immigration Consultancy Website
+# CANEXT Consultancy Website
 
 A comprehensive website for a Canadian immigration consultancy specializing in visa services, including study permits, work permits, and express entry applications.
 
