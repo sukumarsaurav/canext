@@ -4,7 +4,12 @@ include('../includes/header.php');
 ?>
 
 <!-- Page Header -->
-<section class="page-header" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/visas/work-permit-header.jpg'); background-size: cover; background-position: center; padding: 100px 0; color: var(--color-light); text-align: center;">
+<section class="page-header" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/visas/work-permit-header.jpg'); background-size: cover; background-position: center; padding: 100px 0; color: var(--color-light); text-align: center; position: relative; overflow: hidden; background-color: var(--color-burgundy);">
+    <!-- Decorative Circles -->
+    <div style="position: absolute; width: 300px; height: 300px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.1); top: -100px; left: -100px;"></div>
+    <div style="position: absolute; width: 200px; height: 200px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.1); bottom: -50px; right: 10%; animation: pulse 4s infinite alternate;"></div>
+    <div style="position: absolute; width: 100px; height: 100px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.1); top: 30%; right: 20%; animation: pulse 3s infinite alternate;"></div>
+    
     <div class="container">
         <h1 data-aos="fade-up">Work Permit</h1>
         <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="100">
@@ -18,41 +23,45 @@ include('../includes/header.php');
 </section>
 
 <!-- Introduction Section -->
-<section class="section intro-section">
+<section class="section intro-section" style="position: relative; overflow: hidden; background-color: #f9f9f9;">
+    <!-- Decorative Circles -->
+    <div style="position: absolute; width: 400px; height: 400px; border-radius: 50%; background-color: rgba(163, 29, 29, 0.05); top: -200px; right: -200px; animation: pulse 8s infinite alternate;"></div>
+    <div style="position: absolute; width: 200px; height: 200px; border-radius: 50%; background-color: rgba(163, 29, 29, 0.05); bottom: -100px; left: 10%; animation: pulse 6s infinite alternate;"></div>
+    
     <div class="container">
         <div class="row" style="display: flex; flex-wrap: wrap; gap: 30px;">
-            <div class="col-lg-8" style="flex: 1; min-width: 60%;">
-                <h2 class="section-title" data-aos="fade-up">Advance Your Career in Canada</h2>
-                <p data-aos="fade-up" data-aos-delay="100">A Canadian work permit is an official document that allows foreign nationals to work for an employer in Canada for a specified period. Canada offers various types of work permits to suit different situations, whether you have a job offer, want to participate in specific programs, or are accompanying a family member.</p>
+            <div class="col-content" data-aos="fade-up" style="flex: 2; min-width: 60%;">
+                <h2 class="section-title">Work in Canada</h2>
+                <p data-aos="fade-up" data-aos-delay="100">A Canadian work permit is an official document that allows foreign nationals to work legally in Canada for a specified employer or in a specific occupation. Work permits are typically tied to a specific job offer from a Canadian employer, although there are some exceptions for open work permits.</p>
                 
-                <p data-aos="fade-up" data-aos-delay="200">Working in Canada not only provides valuable international experience but can also be a pathway to permanent residence through programs like the Canadian Experience Class or Provincial Nominee Programs.</p>
+                <p data-aos="fade-up" data-aos-delay="200">Canada offers various types of work permits, including those under the Temporary Foreign Worker Program (TFWP), which requires a Labour Market Impact Assessment (LMIA), and the International Mobility Program (IMP) for LMIA-exempt work permits under international agreements like CUSMA/USMCA or intra-company transfers.</p>
                 
-                <p data-aos="fade-up" data-aos-delay="300">Canada's strong economy, diverse work culture, and high standard of living make it an attractive destination for skilled workers from around the world. Our experts can help determine which work permit options best suit your qualifications and career goals.</p>
+                <p data-aos="fade-up" data-aos-delay="300">Working in Canada can provide invaluable Canadian experience, which may enhance your eligibility for permanent residence through programs like the Canadian Experience Class or Provincial Nominee Programs. Additionally, certain work permits allow spouses to obtain open work permits and children to study in Canada without student permits.</p>
             </div>
             
-            <div class="col-lg-4" style="flex: 1; min-width: 30%;" data-aos="fade-left" data-aos-delay="400">
+            <div class="col-sidebar" data-aos="fade-up" data-aos-delay="400" style="flex: 1; min-width: 30%;">
                 <div style="background-color: var(--color-cream); padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
                     <h3 style="color: var(--color-burgundy); margin-bottom: 20px;">Why Choose CANEXT?</h3>
                     <ul style="list-style: none; padding: 0;">
                         <li style="display: flex; align-items: flex-start; margin-bottom: 15px;">
                             <i class="fas fa-check-circle" style="color: var(--color-burgundy); margin-right: 10px; margin-top: 3px;"></i>
-                            <span>Strategic advice on the most suitable work permit</span>
+                            <span>Personalized work permit strategy</span>
                         </li>
                         <li style="display: flex; align-items: flex-start; margin-bottom: 15px;">
                             <i class="fas fa-check-circle" style="color: var(--color-burgundy); margin-right: 10px; margin-top: 3px;"></i>
-                            <span>Guidance for employers on LMIA applications</span>
+                            <span>LMIA and LMIA-exempt permit guidance</span>
                         </li>
                         <li style="display: flex; align-items: flex-start; margin-bottom: 15px;">
                             <i class="fas fa-check-circle" style="color: var(--color-burgundy); margin-right: 10px; margin-top: 3px;"></i>
-                            <span>Comprehensive work permit application preparation</span>
+                            <span>Employer compliance assistance</span>
                         </li>
                         <li style="display: flex; align-items: flex-start; margin-bottom: 15px;">
                             <i class="fas fa-check-circle" style="color: var(--color-burgundy); margin-right: 10px; margin-top: 3px;"></i>
-                            <span>Support with work permit extensions and changes</span>
+                            <span>Work permit extension support</span>
                         </li>
                         <li style="display: flex; align-items: flex-start;">
                             <i class="fas fa-check-circle" style="color: var(--color-burgundy); margin-right: 10px; margin-top: 3px;"></i>
-                            <span>Pathways to permanent residence planning</span>
+                            <span>Pathways to permanent residence</span>
                         </li>
                     </ul>
                     <a href="../Book-Consultation.php?service=work-permit" class="btn btn-primary" style="width: 100%; margin-top: 20px;">Book Consultation</a>
@@ -61,6 +70,18 @@ include('../includes/header.php');
         </div>
     </div>
 </section>
+
+<style>
+@media (max-width: 768px) {
+    .intro-section .row {
+        flex-direction: column;
+    }
+    .intro-section .col-content,
+    .intro-section .col-sidebar {
+        min-width: 100% !important;
+    }
+}
+</style>
 
 <!-- Types of Work Permits Section -->
 <section class="section types-section" style="background-color: var(--color-cream);">

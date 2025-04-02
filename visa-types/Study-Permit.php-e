@@ -22,18 +22,6 @@ include('../includes/header.php');
     </div>
 </section>
 
-<style>
-@media (max-width: 768px) {
-    .intro-section .row {
-        flex-direction: column;
-    }
-    .intro-section .col-content,
-    .intro-section .col-sidebar {
-        min-width: 100% !important;
-    }
-}
-</style>
-
 <!-- Introduction Section -->
 <section class="section intro-section" style="position: relative; overflow: hidden; background-color: #f9f9f9;">
     <!-- Decorative Circles -->
@@ -41,8 +29,8 @@ include('../includes/header.php');
     <div style="position: absolute; width: 200px; height: 200px; border-radius: 50%; background-color: rgba(163, 29, 29, 0.05); bottom: -100px; left: 10%; animation: pulse 6s infinite alternate;"></div>
     
     <div class="container">
-        <div class="row" style="display: flex; flex-wrap: wrap; gap: 30px;">
-            <div class="col-content" data-aos="fade-up" style="flex: 2; min-width: 60%;">
+        <div class="row" style="display: flex; flex-direction: column; gap: 30px;">
+            <div class="col-content" data-aos="fade-up">
                 <h2 class="section-title">Pursue Your Education in Canada</h2>
                 <p data-aos="fade-up" data-aos-delay="100">A study permit is an official document issued by the Canadian government that allows foreign nationals to study at designated learning institutions (DLIs) in Canada. With a study permit, you can enroll in academic, professional, or vocational training programs at Canada's world-renowned educational institutions.</p>
                 
@@ -51,7 +39,7 @@ include('../includes/header.php');
                 <p data-aos="fade-up" data-aos-delay="300">Most foreign nationals need a study permit to study in Canada. However, some short-term programs (less than 6 months) may not require one. Our experts can help determine your specific requirements.</p>
             </div>
             
-            <div class="col-sidebar" data-aos="fade-up" data-aos-delay="400" style="flex: 1; min-width: 30%;">
+            <div class="col-sidebar" data-aos="fade-up" data-aos-delay="400">
                 <div style="background-color: var(--color-cream); padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
                     <h3 style="color: var(--color-burgundy); margin-bottom: 20px;">Why Choose CANEXT?</h3>
                     <ul style="list-style: none; padding: 0;">

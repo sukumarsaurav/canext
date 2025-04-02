@@ -4,7 +4,12 @@ include('../includes/header.php');
 ?>
 
 <!-- Page Header -->
-<section class="page-header" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/visas/express-entry-header.jpg'); background-size: cover; background-position: center; padding: 100px 0; color: var(--color-light); text-align: center;">
+<section class="page-header" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/visas/express-entry-header.jpg'); background-size: cover; background-position: center; padding: 100px 0; color: var(--color-light); text-align: center; position: relative; overflow: hidden; background-color: var(--color-burgundy);">
+    <!-- Decorative Circles -->
+    <div style="position: absolute; width: 300px; height: 300px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.1); top: -100px; left: -100px;"></div>
+    <div style="position: absolute; width: 200px; height: 200px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.1); bottom: -50px; right: 10%; animation: pulse 4s infinite alternate;"></div>
+    <div style="position: absolute; width: 100px; height: 100px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.1); top: 30%; right: 20%; animation: pulse 3s infinite alternate;"></div>
+    
     <div class="container">
         <h1 data-aos="fade-up">Express Entry Immigration</h1>
         <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="100">
@@ -18,33 +23,33 @@ include('../includes/header.php');
 </section>
 
 <!-- Introduction Section -->
-<section class="section intro-section">
+<section class="section intro-section" style="position: relative; overflow: hidden; background-color: #f9f9f9;">
+    <!-- Decorative Circles -->
+    <div style="position: absolute; width: 400px; height: 400px; border-radius: 50%; background-color: rgba(163, 29, 29, 0.05); top: -200px; right: -200px; animation: pulse 8s infinite alternate;"></div>
+    <div style="position: absolute; width: 200px; height: 200px; border-radius: 50%; background-color: rgba(163, 29, 29, 0.05); bottom: -100px; left: 10%; animation: pulse 6s infinite alternate;"></div>
+    
     <div class="container">
         <div class="row" style="display: flex; flex-wrap: wrap; gap: 30px;">
-            <div class="col-lg-8" style="flex: 1; min-width: 60%;">
-                <h2 class="section-title" data-aos="fade-up">Canada's Express Entry System</h2>
-                <p data-aos="fade-up" data-aos-delay="100">Express Entry is Canada's flagship immigration application management system for skilled workers seeking permanent residence. Introduced in 2015, this points-based system manages applications for three federal economic immigration programs:</p>
+            <div class="col-content" data-aos="fade-up" style="flex: 2; min-width: 60%;">
+                <h2 class="section-title">Canada's Premier Immigration Program</h2>
+                <p data-aos="fade-up" data-aos-delay="100">Express Entry is Canada's flagship immigration system that manages applications for permanent residence under three federal economic programs: the Federal Skilled Worker Program, the Federal Skilled Trades Program, and the Canadian Experience Class.</p>
                 
-                <ul data-aos="fade-up" data-aos-delay="200" style="margin: 20px 0; padding-left: 20px;">
-                    <li style="margin-bottom: 10px;"><strong>Federal Skilled Worker Program (FSWP)</strong> - For skilled workers with foreign work experience</li>
-                    <li style="margin-bottom: 10px;"><strong>Federal Skilled Trades Program (FSTP)</strong> - For skilled trades people</li>
-                    <li style="margin-bottom: 10px;"><strong>Canadian Experience Class (CEC)</strong> - For skilled workers who have Canadian work experience</li>
-                </ul>
+                <p data-aos="fade-up" data-aos-delay="200">This points-based system evaluates candidates based on factors such as age, education, work experience, and language proficiency. Those with the highest scores are invited to apply for permanent residence through regular draws.</p>
                 
-                <p data-aos="fade-up" data-aos-delay="300">The Express Entry system uses the Comprehensive Ranking System (CRS) to assess and score candidate profiles, ranking them in the Express Entry pool. The highest-ranked candidates are invited to apply for permanent residence through regular draws.</p>
+                <p data-aos="fade-up" data-aos-delay="300">Express Entry offers one of the fastest pathways to permanent residence in Canada, with processing times typically ranging from 6 to 8 months. For skilled workers looking to build a new life in Canada, Express Entry represents an excellent opportunity to achieve Canadian permanent residence.</p>
             </div>
             
-            <div class="col-lg-4" style="flex: 1; min-width: 30%;" data-aos="fade-left" data-aos-delay="400">
+            <div class="col-sidebar" data-aos="fade-up" data-aos-delay="400" style="flex: 1; min-width: 30%;">
                 <div style="background-color: var(--color-cream); padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
                     <h3 style="color: var(--color-burgundy); margin-bottom: 20px;">Why Choose CANEXT?</h3>
                     <ul style="list-style: none; padding: 0;">
                         <li style="display: flex; align-items: flex-start; margin-bottom: 15px;">
                             <i class="fas fa-check-circle" style="color: var(--color-burgundy); margin-right: 10px; margin-top: 3px;"></i>
-                            <span>Personalized Express Entry strategy for your profile</span>
+                            <span>Personalized Express Entry strategy</span>
                         </li>
                         <li style="display: flex; align-items: flex-start; margin-bottom: 15px;">
                             <i class="fas fa-check-circle" style="color: var(--color-burgundy); margin-right: 10px; margin-top: 3px;"></i>
-                            <span>CRS score optimization techniques</span>
+                            <span>CRS score optimization</span>
                         </li>
                         <li style="display: flex; align-items: flex-start; margin-bottom: 15px;">
                             <i class="fas fa-check-circle" style="color: var(--color-burgundy); margin-right: 10px; margin-top: 3px;"></i>
@@ -52,11 +57,11 @@ include('../includes/header.php');
                         </li>
                         <li style="display: flex; align-items: flex-start; margin-bottom: 15px;">
                             <i class="fas fa-check-circle" style="color: var(--color-burgundy); margin-right: 10px; margin-top: 3px;"></i>
-                            <span>Regular updates on program changes</span>
+                            <span>Post-ITA application support</span>
                         </li>
                         <li style="display: flex; align-items: flex-start;">
                             <i class="fas fa-check-circle" style="color: var(--color-burgundy); margin-right: 10px; margin-top: 3px;"></i>
-                            <span>Post-landing settlement support</span>
+                            <span>Post-landing services and guidance</span>
                         </li>
                     </ul>
                     <a href="../Book-Consultation.php?service=express-entry" class="btn btn-primary" style="width: 100%; margin-top: 20px;">Book Consultation</a>
@@ -65,6 +70,18 @@ include('../includes/header.php');
         </div>
     </div>
 </section>
+
+<style>
+@media (max-width: 768px) {
+    .intro-section .row {
+        flex-direction: column;
+    }
+    .intro-section .col-content,
+    .intro-section .col-sidebar {
+        min-width: 100% !important;
+    }
+}
+</style>
 
 <!-- Eligibility Section -->
 <section class="section eligibility-section" style="background-color: var(--color-cream);">

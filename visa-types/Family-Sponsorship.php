@@ -4,7 +4,12 @@ include('../includes/header.php');
 ?>
 
 <!-- Page Header -->
-<section class="page-header" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/visas/family-sponsorship-header.jpg'); background-size: cover; background-position: center; padding: 100px 0; color: var(--color-light); text-align: center;">
+<section class="page-header" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/visas/family-sponsorship-header.jpg'); background-size: cover; background-position: center; padding: 100px 0; color: var(--color-light); text-align: center; position: relative; overflow: hidden; background-color: var(--color-burgundy);">
+    <!-- Decorative Circles -->
+    <div style="position: absolute; width: 300px; height: 300px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.1); top: -100px; left: -100px;"></div>
+    <div style="position: absolute; width: 200px; height: 200px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.1); bottom: -50px; right: 10%; animation: pulse 4s infinite alternate;"></div>
+    <div style="position: absolute; width: 100px; height: 100px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.1); top: 30%; right: 20%; animation: pulse 3s infinite alternate;"></div>
+    
     <div class="container">
         <h1 data-aos="fade-up">Family Sponsorship</h1>
         <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="100">
@@ -18,41 +23,47 @@ include('../includes/header.php');
 </section>
 
 <!-- Introduction Section -->
-<section class="section intro-section">
+<section class="section intro-section" style="position: relative; overflow: hidden; background-color: #f9f9f9;">
+    <!-- Decorative Circles -->
+    <div style="position: absolute; width: 400px; height: 400px; border-radius: 50%; background-color: rgba(163, 29, 29, 0.05); top: -200px; right: -200px; animation: pulse 8s infinite alternate;"></div>
+    <div style="position: absolute; width: 200px; height: 200px; border-radius: 50%; background-color: rgba(163, 29, 29, 0.05); bottom: -100px; left: 10%; animation: pulse 6s infinite alternate;"></div>
+    
     <div class="container">
         <div class="row" style="display: flex; flex-wrap: wrap; gap: 30px;">
-            <div class="col-lg-8" style="flex: 1; min-width: 60%;">
-                <h2 class="section-title" data-aos="fade-up">Reunite with Your Loved Ones in Canada</h2>
-                <p data-aos="fade-up" data-aos-delay="100">Canada's Family Sponsorship Program allows Canadian citizens and permanent residents to sponsor eligible family members to come to Canada as permanent residents. This program reinforces Canada's commitment to keeping families together.</p>
+            <div class="col-content" data-aos="fade-up" style="flex: 2; min-width: 60%;">
+                <h2 class="section-title">Reunite with Your Loved Ones</h2>
+                <p data-aos="fade-up" data-aos-delay="100">Canada's Family Sponsorship Program allows Canadian citizens and permanent residents to sponsor eligible family members for permanent residence. This program recognizes the importance of keeping families together and is a cornerstone of Canada's immigration system.</p>
                 
-                <p data-aos="fade-up" data-aos-delay="200">As a sponsor, you make a commitment to support your sponsored family members financially upon their arrival to Canada, ensuring they have the necessities of life including food, clothing, shelter, and healthcare not provided by public health care.</p>
+                <p data-aos="fade-up" data-aos-delay="200">Family members eligible for sponsorship include spouses or common-law partners, dependent children, parents, grandparents, and in some cases, other relatives. Different categories have different requirements, processing times, and application procedures.</p>
                 
-                <p data-aos="fade-up" data-aos-delay="300">Family reunification remains a cornerstone of Canada's immigration policy, with various streams available depending on your relationship to the person you wish to sponsor.</p>
+                <p data-aos="fade-up" data-aos-delay="300">Sponsoring a family member is a significant commitment. As a sponsor, you'll need to sign an undertaking promising to provide financial support for your sponsored family member for a specified period, ensuring they don't need to seek social assistance.</p>
+
+                <p data-aos="fade-up" data-aos-delay="400">The family sponsorship process can be complex, with strict requirements regarding financial capacity, relationship authenticity, and eligibility criteria. Working with experienced professionals like our team at CANEXT ensures your application is properly prepared and has the best chance of success.</p>
             </div>
             
-            <div class="col-lg-4" style="flex: 1; min-width: 30%;" data-aos="fade-left" data-aos-delay="400">
+            <div class="col-sidebar" data-aos="fade-up" data-aos-delay="400" style="flex: 1; min-width: 30%;">
                 <div style="background-color: var(--color-cream); padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
                     <h3 style="color: var(--color-burgundy); margin-bottom: 20px;">Why Choose CANEXT?</h3>
                     <ul style="list-style: none; padding: 0;">
                         <li style="display: flex; align-items: flex-start; margin-bottom: 15px;">
                             <i class="fas fa-check-circle" style="color: var(--color-burgundy); margin-right: 10px; margin-top: 3px;"></i>
-                            <span>Expert guidance through the complex sponsorship process</span>
+                            <span>Personalized eligibility assessment</span>
                         </li>
                         <li style="display: flex; align-items: flex-start; margin-bottom: 15px;">
                             <i class="fas fa-check-circle" style="color: var(--color-burgundy); margin-right: 10px; margin-top: 3px;"></i>
-                            <span>Comprehensive document preparation and review</span>
+                            <span>Comprehensive application preparation</span>
                         </li>
                         <li style="display: flex; align-items: flex-start; margin-bottom: 15px;">
                             <i class="fas fa-check-circle" style="color: var(--color-burgundy); margin-right: 10px; margin-top: 3px;"></i>
-                            <span>Strategic advice to address potential challenges</span>
+                            <span>Guidance on financial requirements</span>
                         </li>
                         <li style="display: flex; align-items: flex-start; margin-bottom: 15px;">
                             <i class="fas fa-check-circle" style="color: var(--color-burgundy); margin-right: 10px; margin-top: 3px;"></i>
-                            <span>Personalized support throughout the application process</span>
+                            <span>Assistance with complex scenarios</span>
                         </li>
                         <li style="display: flex; align-items: flex-start;">
                             <i class="fas fa-check-circle" style="color: var(--color-burgundy); margin-right: 10px; margin-top: 3px;"></i>
-                            <span>Settlement assistance for newly arrived family members</span>
+                            <span>Support throughout the application process</span>
                         </li>
                     </ul>
                     <a href="../Book-Consultation.php?service=family-sponsorship" class="btn btn-primary" style="width: 100%; margin-top: 20px;">Book Consultation</a>
@@ -61,6 +72,18 @@ include('../includes/header.php');
         </div>
     </div>
 </section>
+
+<style>
+@media (max-width: 768px) {
+    .intro-section .row {
+        flex-direction: column;
+    }
+    .intro-section .col-content,
+    .intro-section .col-sidebar {
+        min-width: 100% !important;
+    }
+}
+</style>
 
 <!-- Sponsorship Categories Section -->
 <section class="section categories-section" style="background-color: var(--color-cream);">

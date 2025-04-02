@@ -4,7 +4,12 @@ include('../includes/header.php');
 ?>
 
 <!-- Page Header -->
-<section class="page-header" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/visas/provincial-nominee-header.jpg'); background-size: cover; background-position: center; padding: 100px 0; color: var(--color-light); text-align: center;">
+<section class="page-header" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/visas/pnp-header.jpg'); background-size: cover; background-position: center; padding: 100px 0; color: var(--color-light); text-align: center; position: relative; overflow: hidden; background-color: var(--color-burgundy);">
+    <!-- Decorative Circles -->
+    <div style="position: absolute; width: 300px; height: 300px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.1); top: -100px; left: -100px;"></div>
+    <div style="position: absolute; width: 200px; height: 200px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.1); bottom: -50px; right: 10%; animation: pulse 4s infinite alternate;"></div>
+    <div style="position: absolute; width: 100px; height: 100px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.1); top: 30%; right: 20%; animation: pulse 3s infinite alternate;"></div>
+    
     <div class="container">
         <h1 data-aos="fade-up">Provincial Nominee Program</h1>
         <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="100">
@@ -18,41 +23,45 @@ include('../includes/header.php');
 </section>
 
 <!-- Introduction Section -->
-<section class="section intro-section">
+<section class="section intro-section" style="position: relative; overflow: hidden; background-color: #f9f9f9;">
+    <!-- Decorative Circles -->
+    <div style="position: absolute; width: 400px; height: 400px; border-radius: 50%; background-color: rgba(163, 29, 29, 0.05); top: -200px; right: -200px; animation: pulse 8s infinite alternate;"></div>
+    <div style="position: absolute; width: 200px; height: 200px; border-radius: 50%; background-color: rgba(163, 29, 29, 0.05); bottom: -100px; left: 10%; animation: pulse 6s infinite alternate;"></div>
+    
     <div class="container">
         <div class="row" style="display: flex; flex-wrap: wrap; gap: 30px;">
-            <div class="col-lg-8" style="flex: 1; min-width: 60%;">
-                <h2 class="section-title" data-aos="fade-up">Canada's Provincial Nominee Programs</h2>
-                <p data-aos="fade-up" data-aos-delay="100">Provincial Nominee Programs (PNPs) allow Canadian provinces and territories to nominate individuals who wish to immigrate to Canada and who are interested in settling in a particular province. Each province and territory has its own streams and criteria for selecting nominees based on their specific economic needs.</p>
+            <div class="col-content" data-aos="fade-up" style="flex: 2; min-width: 60%;">
+                <h2 class="section-title">Provincial Nominee Programs</h2>
+                <p data-aos="fade-up" data-aos-delay="100">The Provincial Nominee Program (PNP) allows Canadian provinces and territories to nominate individuals who wish to immigrate to Canada and who are interested in settling in a particular province. Each province and territory has its own provincial nomination programs designed to meet their specific economic and demographic needs.</p>
                 
-                <p data-aos="fade-up" data-aos-delay="200">A provincial nomination can significantly increase your chances of receiving an invitation to apply for permanent residence, as it adds 600 points to your Comprehensive Ranking System (CRS) score if you're in the Express Entry pool.</p>
+                <p data-aos="fade-up" data-aos-delay="200">As a nominated candidate, you'll have a significant advantage in your application for permanent residence, as provincial nomination typically adds 600 points to your Comprehensive Ranking System (CRS) score if you're applying through Express Entry, or provides an alternative pathway to permanent residence outside of Express Entry.</p>
                 
-                <p data-aos="fade-up" data-aos-delay="300">Most provinces and territories in Canada participate in the Provincial Nominee Program, each with their own unique immigration streams and requirements.</p>
+                <p data-aos="fade-up" data-aos-delay="300">At CANEXT Immigration, we specialize in identifying the most suitable provincial programs for your unique profile and guiding you through the entire nomination process. Our team stays updated on the ever-changing requirements and opportunities across all provinces and territories.</p>
             </div>
             
-            <div class="col-lg-4" style="flex: 1; min-width: 30%;" data-aos="fade-left" data-aos-delay="400">
+            <div class="col-sidebar" data-aos="fade-up" data-aos-delay="400" style="flex: 1; min-width: 30%;">
                 <div style="background-color: var(--color-cream); padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
                     <h3 style="color: var(--color-burgundy); margin-bottom: 20px;">Why Choose CANEXT?</h3>
                     <ul style="list-style: none; padding: 0;">
                         <li style="display: flex; align-items: flex-start; margin-bottom: 15px;">
                             <i class="fas fa-check-circle" style="color: var(--color-burgundy); margin-right: 10px; margin-top: 3px;"></i>
-                            <span>Expert guidance on selecting the right PNP</span>
+                            <span>Expert assessment of provincial eligibility</span>
                         </li>
                         <li style="display: flex; align-items: flex-start; margin-bottom: 15px;">
                             <i class="fas fa-check-circle" style="color: var(--color-burgundy); margin-right: 10px; margin-top: 3px;"></i>
-                            <span>Personalized eligibility assessment</span>
+                            <span>Strategic province selection advice</span>
                         </li>
                         <li style="display: flex; align-items: flex-start; margin-bottom: 15px;">
                             <i class="fas fa-check-circle" style="color: var(--color-burgundy); margin-right: 10px; margin-top: 3px;"></i>
-                            <span>Application preparation and review</span>
+                            <span>Comprehensive application preparation</span>
                         </li>
                         <li style="display: flex; align-items: flex-start; margin-bottom: 15px;">
                             <i class="fas fa-check-circle" style="color: var(--color-burgundy); margin-right: 10px; margin-top: 3px;"></i>
-                            <span>Up-to-date information on PNP streams</span>
+                            <span>Up-to-date knowledge of all provincial programs</span>
                         </li>
                         <li style="display: flex; align-items: flex-start;">
                             <i class="fas fa-check-circle" style="color: var(--color-burgundy); margin-right: 10px; margin-top: 3px;"></i>
-                            <span>Post-nomination support</span>
+                            <span>Post-nomination support services</span>
                         </li>
                     </ul>
                     <a href="../Book-Consultation.php?service=provincial-nominee" class="btn btn-primary" style="width: 100%; margin-top: 20px;">Book Consultation</a>
@@ -62,7 +71,19 @@ include('../includes/header.php');
     </div>
 </section>
 
-<!-- Provincial Programs Section -->
+<style>
+@media (max-width: 768px) {
+    .intro-section .row {
+        flex-direction: column;
+    }
+    .intro-section .col-content,
+    .intro-section .col-sidebar {
+        min-width: 100% !important;
+    }
+}
+</style>
+
+<!-- PNP Overview Section -->
 <section class="section programs-section" style="background-color: var(--color-cream);">
     <div class="container">
         <h2 class="section-title text-center" data-aos="fade-up" style="text-align: center;">Provincial Nominee Programs</h2>

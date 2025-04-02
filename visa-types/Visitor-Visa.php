@@ -4,7 +4,12 @@ include('../includes/header.php');
 ?>
 
 <!-- Page Header -->
-<section class="page-header" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/visas/visitor-visa-header.jpg'); background-size: cover; background-position: center; padding: 100px 0; color: var(--color-light); text-align: center;">
+<section class="page-header" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/visas/visitor-visa-header.jpg'); background-size: cover; background-position: center; padding: 100px 0; color: var(--color-light); text-align: center; position: relative; overflow: hidden; background-color: var(--color-burgundy);">
+    <!-- Decorative Circles -->
+    <div style="position: absolute; width: 300px; height: 300px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.1); top: -100px; left: -100px;"></div>
+    <div style="position: absolute; width: 200px; height: 200px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.1); bottom: -50px; right: 10%; animation: pulse 4s infinite alternate;"></div>
+    <div style="position: absolute; width: 100px; height: 100px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.1); top: 30%; right: 20%; animation: pulse 3s infinite alternate;"></div>
+    
     <div class="container">
         <h1 data-aos="fade-up">Visitor Visa</h1>
         <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="100">
@@ -18,55 +23,65 @@ include('../includes/header.php');
 </section>
 
 <!-- Introduction Section -->
-<section class="section intro-section">
+<section class="section intro-section" style="position: relative; overflow: hidden; background-color: #f9f9f9;">
+    <!-- Decorative Circles -->
+    <div style="position: absolute; width: 400px; height: 400px; border-radius: 50%; background-color: rgba(163, 29, 29, 0.05); top: -200px; right: -200px; animation: pulse 8s infinite alternate;"></div>
+    <div style="position: absolute; width: 200px; height: 200px; border-radius: 50%; background-color: rgba(163, 29, 29, 0.05); bottom: -100px; left: 10%; animation: pulse 6s infinite alternate;"></div>
+    
     <div class="container">
         <div class="row" style="display: flex; flex-wrap: wrap; gap: 30px;">
-            <div class="col-lg-8" style="flex: 1; min-width: 60%;">
-                <h2 class="section-title" data-aos="fade-up">Visit Beautiful Canada</h2>
-                <p data-aos="fade-up" data-aos-delay="100">A Canadian visitor visa (also called a temporary resident visa) is an official document that we stick in your passport. It shows that you meet the requirements to enter Canada as a temporary resident.</p>
+            <div class="col-content" data-aos="fade-up" style="flex: 2; min-width: 60%;">
+                <h2 class="section-title">Visit Beautiful Canada</h2>
+                <p data-aos="fade-up" data-aos-delay="100">A Canadian Visitor Visa, also known as a Temporary Resident Visa (TRV), is an official document issued by Immigration, Refugees and Citizenship Canada (IRCC) that is placed in your passport to show that you have met the requirements for admission to Canada as a temporary resident.</p>
                 
-                <div class="visa-types" style="margin-top: 30px;" data-aos="fade-up" data-aos-delay="200">
-                    <h3 style="color: var(--color-burgundy); margin-bottom: 20px;">Types of Visitor Visas</h3>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-                        <div class="visa-type-card" style="background: var(--color-cream); padding: 20px; border-radius: 10px;">
-                            <h4>Single Entry Visa</h4>
-                            <p>Allows you to enter Canada one time for a specific period.</p>
-                        </div>
-                        <div class="visa-type-card" style="background: var(--color-cream); padding: 20px; border-radius: 10px;">
-                            <h4>Multiple Entry Visa</h4>
-                            <p>Lets you enter Canada multiple times during the validity period.</p>
-                        </div>
-                    </div>
-                </div>
+                <p data-aos="fade-up" data-aos-delay="200">Whether you're planning to visit family and friends, explore Canada's natural wonders, attend business meetings, or simply experience Canadian culture, a visitor visa allows you to stay in Canada temporarily for up to 6 months.</p>
+                
+                <p data-aos="fade-up" data-aos-delay="300">Citizens of visa-exempt countries don't need a visitor visa to enter Canada, but most will need an Electronic Travel Authorization (eTA). Our experts can help determine whether you need a visitor visa or an eTA based on your nationality and travel plans.</p>
             </div>
             
-            <div class="col-lg-4" style="flex: 1; min-width: 30%;" data-aos="fade-left" data-aos-delay="300">
+            <div class="col-sidebar" data-aos="fade-up" data-aos-delay="400" style="flex: 1; min-width: 30%;">
                 <div style="background-color: var(--color-cream); padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
                     <h3 style="color: var(--color-burgundy); margin-bottom: 20px;">Why Choose CANEXT?</h3>
                     <ul style="list-style: none; padding: 0;">
                         <li style="display: flex; align-items: flex-start; margin-bottom: 15px;">
                             <i class="fas fa-check-circle" style="color: var(--color-burgundy); margin-right: 10px; margin-top: 3px;"></i>
-                            <span>Expert guidance on visa requirements</span>
+                            <span>Personalized visitor visa strategy</span>
                         </li>
                         <li style="display: flex; align-items: flex-start; margin-bottom: 15px;">
                             <i class="fas fa-check-circle" style="color: var(--color-burgundy); margin-right: 10px; margin-top: 3px;"></i>
-                            <span>Document preparation assistance</span>
+                            <span>Expert document preparation and review</span>
                         </li>
                         <li style="display: flex; align-items: flex-start; margin-bottom: 15px;">
                             <i class="fas fa-check-circle" style="color: var(--color-burgundy); margin-right: 10px; margin-top: 3px;"></i>
-                            <span>Application review and submission</span>
+                            <span>Guidance on demonstrating ties to home country</span>
+                        </li>
+                        <li style="display: flex; align-items: flex-start; margin-bottom: 15px;">
+                            <i class="fas fa-check-circle" style="color: var(--color-burgundy); margin-right: 10px; margin-top: 3px;"></i>
+                            <span>Assistance with travel itinerary planning</span>
                         </li>
                         <li style="display: flex; align-items: flex-start;">
                             <i class="fas fa-check-circle" style="color: var(--color-burgundy); margin-right: 10px; margin-top: 3px;"></i>
-                            <span>Travel and accommodation guidance</span>
+                            <span>Support throughout the application process</span>
                         </li>
                     </ul>
-                    <a href="../Book-Consultation.php" class="btn btn-primary" style="width: 100%; margin-top: 20px;">Book Consultation</a>
+                    <a href="../Book-Consultation.php?service=visitor-visa" class="btn btn-primary" style="width: 100%; margin-top: 20px;">Book Consultation</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<style>
+@media (max-width: 768px) {
+    .intro-section .row {
+        flex-direction: column;
+    }
+    .intro-section .col-content,
+    .intro-section .col-sidebar {
+        min-width: 100% !important;
+    }
+}
+</style>
 
 <!-- Requirements Section -->
 <section class="section requirements-section" style="background-color: var(--color-cream);">
