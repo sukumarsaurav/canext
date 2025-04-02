@@ -213,39 +213,37 @@ function renderStep() {
                             </div>
                         </div>
 
-                        ${formData.language && formData.language !== 'none' ? `
-                            <div class="form-group">
-                                <label style="display: block; color: var(--color-burgundy); margin-bottom: 16px;">
-                                    Language Proficiency Level
+                        <div class="form-group">
+                            <label style="display: block; color: var(--color-burgundy); margin-bottom: 16px;">
+                                Language Proficiency Level
+                            </label>
+                            <div class="radio-group" style="display: flex; flex-direction: column; gap: 12px;">
+                                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                    <input type="radio" name="languageScore" value="clb9plus"
+                                        ${formData.languageScore === 'clb9plus' ? 'checked' : ''}
+                                        onchange="handleInputChange('languageScore', this.value)">
+                                    <span>CLB 9+ (Advanced)</span>
                                 </label>
-                                <div class="radio-group" style="display: flex; flex-direction: column; gap: 12px;">
-                                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-                                        <input type="radio" name="languageScore" value="clb9plus"
-                                            ${formData.languageScore === 'clb9plus' ? 'checked' : ''}
-                                            onchange="handleInputChange('languageScore', this.value)">
-                                        <span>CLB 9+ (Advanced)</span>
-                                    </label>
-                                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-                                        <input type="radio" name="languageScore" value="clb7to8"
-                                            ${formData.languageScore === 'clb7to8' ? 'checked' : ''}
-                                            onchange="handleInputChange('languageScore', this.value)">
-                                        <span>CLB 7-8 (Intermediate to Advanced)</span>
-                                    </label>
-                                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-                                        <input type="radio" name="languageScore" value="clb5to6"
-                                            ${formData.languageScore === 'clb5to6' ? 'checked' : ''}
-                                            onchange="handleInputChange('languageScore', this.value)">
-                                        <span>CLB 5-6 (Intermediate)</span>
-                                    </label>
-                                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-                                        <input type="radio" name="languageScore" value="clb4less"
-                                            ${formData.languageScore === 'clb4less' ? 'checked' : ''}
-                                            onchange="handleInputChange('languageScore', this.value)">
-                                        <span>CLB 4 or less (Basic)</span>
-                                    </label>
-                                </div>
+                                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                    <input type="radio" name="languageScore" value="clb7to8"
+                                        ${formData.languageScore === 'clb7to8' ? 'checked' : ''}
+                                        onchange="handleInputChange('languageScore', this.value)">
+                                    <span>CLB 7-8 (Intermediate to Advanced)</span>
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                    <input type="radio" name="languageScore" value="clb5to6"
+                                        ${formData.languageScore === 'clb5to6' ? 'checked' : ''}
+                                        onchange="handleInputChange('languageScore', this.value)">
+                                    <span>CLB 5-6 (Intermediate)</span>
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                    <input type="radio" name="languageScore" value="clb4less"
+                                        ${formData.languageScore === 'clb4less' ? 'checked' : ''}
+                                        onchange="handleInputChange('languageScore', this.value)">
+                                    <span>CLB 4 or less (Basic)</span>
+                                </label>
                             </div>
-                        ` : ''}
+                        </div>
                     </div>
 
                     <div class="card-footer" style="display: flex; justify-content: space-between;">
@@ -404,7 +402,7 @@ function validateStep() {
             if (!formData.language) {
                 isValid = false;
                 errorMessage = 'Please select your language test';
-            } else if (formData.language !== 'none' && !formData.languageScore) {
+            } else if (!formData.languageScore) {
                 isValid = false;
                 errorMessage = 'Please select your language proficiency level';
             }

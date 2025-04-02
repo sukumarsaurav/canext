@@ -148,63 +148,148 @@ include('includes/header.php');
 </section>
 
 <!-- Success Stories Section -->
-<section class="section success-stories" id="success-stories">
+<section class="section success-stories" id="success-stories" style="background-color: #FDF7EF; padding: 80px 0;">
     <div class="container">
-        <h2 class="section-title" data-aos="fade-up">Success Stories</h2>
-        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">See how we've helped others achieve their Canadian dreams</p>
+        <h2 class="section-title" style="font-size: 2.5rem; color: var(--color-burgundy); text-align: center; margin-bottom: 10px;">Check what's our client</h2>
+        <h2 class="section-title" style="font-size: 2.5rem; color: var(--color-burgundy); text-align: center; margin-bottom: 60px;">say about us!</h2>
         
-        <div class="stories-slider swiper" data-aos="fade-up" data-aos-delay="200">
-            <div class="swiper-wrapper">
-                <!-- Story 1 -->
-                <div class="swiper-slide">
-                    <div class="story-card">
-                        <div class="story-header">
-                            <img src="images/testimonials/person1.jpg" alt="John Smith" class="story-avatar">
-                            <div>
-                                <h4 class="story-client">John Smith</h4>
-                                <p class="story-visa-type">Express Entry</p>
-                            </div>
-                        </div>
-                        <p class="story-content">"CANEXT made my Express Entry application process smooth and stress-free. Their guidance helped me secure permanent residency in just 6 months. Their attention to detail and expertise made all the difference!"</p>
+        <div class="testimonials-container" style="display: flex; gap: 25px; justify-content: center; flex-wrap: wrap; position: relative;">
+            <!-- Navigation buttons -->
+            <button class="nav-btn prev" style="position: absolute; left: -20px; top: 50%; transform: translateY(-50%); width: 50px; height: 50px; background: var(--color-burgundy); border-radius: 50%; color: white; border: none; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <!-- Testimonial 1 -->
+            <div class="testimonial-card" style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); position: relative; max-width: 350px; flex: 1;">
+                <div style="color: var(--color-burgundy); margin-bottom: 15px; font-weight: 500;">Express Entry Program</div>
+                <p class="story-content" style="font-size: 1.1em; line-height: 1.6; margin-bottom: 20px; position: relative;">
+                    "CANEXT made my Express Entry application process smooth and stress-free. Their guidance helped me secure permanent residency in just 6 months. Their attention to detail and expertise made all the difference!"
+                </p>
+                <div style="display: flex; align-items: center; margin-top: 30px;">
+                    <div>
+                        <h4 style="color: var(--color-burgundy); margin: 0; font-weight: 600;">John Smith</h4>
+                        <p style="margin: 5px 0 0 0; color: #666;">Software Engineer, UK</p>
                     </div>
                 </div>
-                
-                <!-- Story 2 -->
-                <div class="swiper-slide">
-                    <div class="story-card">
-                        <div class="story-header">
-                            <img src="images/testimonials/person2.jpg" alt="Maria Garcia" class="story-avatar">
-                            <div>
-                                <h4 class="story-client">Maria Garcia</h4>
-                                <p class="story-visa-type">Study Permit</p>
-                            </div>
-                        </div>
-                        <p class="story-content">"Thanks to CANEXT, I was accepted into my dream university in Canada. They helped me with my study permit application and gave me valuable advice on preparing for my new life as an international student."</p>
-                    </div>
-                </div>
-                
-                <!-- Story 3 -->
-                <div class="swiper-slide">
-                    <div class="story-card">
-                        <div class="story-header">
-                            <img src="images/testimonials/person3.jpg" alt="Ahmed Hassan" class="story-avatar">
-                            <div>
-                                <h4 class="story-client">Ahmed Hassan</h4>
-                                <p class="story-visa-type">Work Permit</p>
-                            </div>
-                        </div>
-                        <p class="story-content">"After struggling to secure a Canadian work permit on my own, I turned to CANEXT. Their expertise and strategic approach helped me obtain a work permit within weeks. I'm now working for a top company in Toronto!"</p>
-                    </div>
-                </div>
+                <div style="position: absolute; top: 20px; right: 20px; font-size: 3.5em; color: var(--color-burgundy); opacity: 0.2; font-family: serif;">"</div>
             </div>
             
-            <!-- Add pagination and navigation -->
-            <div class="swiper-pagination"></div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
+            <!-- Testimonial 2 -->
+            <div class="testimonial-card" style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); position: relative; max-width: 350px; flex: 1;">
+                <div style="color: var(--color-burgundy); margin-bottom: 15px; font-weight: 500;">Study Permit</div>
+                <p class="story-content" style="font-size: 1.1em; line-height: 1.6; margin-bottom: 20px; position: relative;">
+                    "Thanks to CANEXT, I was accepted into my dream university in Canada. They helped me with my study permit application and gave me valuable advice on preparing for my new life as an international student."
+                </p>
+                <div style="display: flex; align-items: center; margin-top: 30px;">
+                    <div>
+                        <h4 style="color: var(--color-burgundy); margin: 0; font-weight: 600;">Maria Garcia</h4>
+                        <p style="margin: 5px 0 0 0; color: #666;">Student, Mexico</p>
+                    </div>
+                </div>
+                <div style="position: absolute; top: 20px; right: 20px; font-size: 3.5em; color: var(--color-burgundy); opacity: 0.2; font-family: serif;">"</div>
+            </div>
+            
+            <!-- Testimonial 3 -->
+            <div class="testimonial-card" style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); position: relative; max-width: 350px; flex: 1;">
+                <div style="color: var(--color-burgundy); margin-bottom: 15px; font-weight: 500;">Work Permit</div>
+                <p class="story-content" style="font-size: 1.1em; line-height: 1.6; margin-bottom: 20px; position: relative;">
+                    "After struggling to secure a Canadian work permit on my own, I turned to CANEXT. Their expertise and strategic approach helped me obtain a work permit within weeks. I'm now working for a top company in Toronto!"
+                </p>
+                <div style="display: flex; align-items: center; margin-top: 30px;">
+                    <div>
+                        <h4 style="color: var(--color-burgundy); margin: 0; font-weight: 600;">Ahmed Hassan</h4>
+                        <p style="margin: 5px 0 0 0; color: #666;">IT Specialist, Egypt</p>
+                    </div>
+                </div>
+                <div style="position: absolute; top: 20px; right: 20px; font-size: 3.5em; color: var(--color-burgundy); opacity: 0.2; font-family: serif;">"</div>
+            </div>
+            
+            <button class="nav-btn next" style="position: absolute; right: -20px; top: 50%; transform: translateY(-50%); width: 50px; height: 50px; background: var(--color-burgundy); border-radius: 50%; color: white; border: none; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+        
+        <!-- Add this for the sticky contact button as shown in image -->
+        <div class="sticky-contact" style="position: fixed; right: 0; top: 50%; transform: translateY(-50%); background-color: var(--color-burgundy); color: white; padding: 15px 10px; writing-mode: vertical-lr; text-orientation: mixed; transform: rotate(180deg); border-radius: 5px 0 0 5px; font-weight: 600; cursor: pointer; z-index: 1000;">
+            Book Consultation
         </div>
     </div>
 </section>
+
+<!-- Script for slider functionality -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const container = document.querySelector('.testimonials-container');
+    const cards = document.querySelectorAll('.testimonial-card');
+    const prevBtn = document.querySelector('.nav-btn.prev');
+    const nextBtn = document.querySelector('.nav-btn.next');
+    
+    let currentIndex = 0;
+    const maxIndex = Math.max(0, cards.length - (window.innerWidth >= 1200 ? 3 : window.innerWidth >= 768 ? 2 : 1));
+    
+    // Initially hide prev button if at start
+    prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
+    prevBtn.style.pointerEvents = currentIndex === 0 ? 'none' : 'auto';
+    
+    // Initially hide next button if at end or not enough cards
+    nextBtn.style.opacity = currentIndex >= maxIndex ? '0.5' : '1';
+    nextBtn.style.pointerEvents = currentIndex >= maxIndex ? 'none' : 'auto';
+    
+    prevBtn.addEventListener('click', function() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateCardsPosition();
+        }
+    });
+    
+    nextBtn.addEventListener('click', function() {
+        if (currentIndex < maxIndex) {
+            currentIndex++;
+            updateCardsPosition();
+        }
+    });
+    
+    function updateCardsPosition() {
+        const cardWidth = cards[0].offsetWidth + 25; // card width + gap
+        
+        cards.forEach((card, index) => {
+            card.style.transform = `translateX(${-currentIndex * cardWidth}px)`;
+            card.style.transition = 'transform 0.3s ease-in-out';
+        });
+        
+        // Update button states
+        prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
+        prevBtn.style.pointerEvents = currentIndex === 0 ? 'none' : 'auto';
+        
+        nextBtn.style.opacity = currentIndex >= maxIndex ? '0.5' : '1';
+        nextBtn.style.pointerEvents = currentIndex >= maxIndex ? 'none' : 'auto';
+    }
+    
+    // Handle responsive behavior
+    window.addEventListener('resize', function() {
+        const newMaxIndex = Math.max(0, cards.length - (window.innerWidth >= 1200 ? 3 : window.innerWidth >= 768 ? 2 : 1));
+        if (currentIndex > newMaxIndex) {
+            currentIndex = newMaxIndex;
+        }
+        updateCardsPosition();
+    });
+    
+    // Add some styles for smooth sliding
+    cards.forEach(card => {
+        card.style.flex = '0 0 auto';
+        card.style.transition = 'transform 0.3s ease-in-out';
+    });
+    
+    // Make container a flex container with overflow hidden
+    container.style.position = 'relative';
+    container.style.overflow = 'hidden';
+    
+    // Make sticky button go to contact section
+    document.querySelector('.sticky-contact').addEventListener('click', function() {
+        document.getElementById('contact').scrollIntoView({behavior: 'smooth'});
+    });
+});
+</script>
 
 <!-- Call to Action Section -->
 <section class="section cta" style="background-image: linear-gradient(rgba(109, 35, 35, 0.9), rgba(109, 35, 35, 0.9)), url('images/cta-background.jpg'); background-size: cover; background-position: center; padding: 100px 0; color: var(--color-light); text-align: center;">
