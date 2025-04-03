@@ -1,11 +1,11 @@
 /* Assessment Tool Button */
 .assessment-tool-button {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
+    top: 40%;
+    right: 0px;
     background-color: var(--color-red);
     color: var(--color-light);
-    border-radius: 50px;
+    border-radius: 5px 5px 0 0;
     padding: 12px 24px;
     display: flex;
     align-items: center;
@@ -14,11 +14,13 @@
     cursor: pointer;
     z-index: 999;
     transition: all 0.3s ease;
+    transform: rotate(-90deg);
+    transform-origin: bottom right;
 }
 
 .assessment-tool-button:hover {
     background-color: var(--color-burgundy);
-    transform: translateY(-3px);
+    right: -40px;
 }
 
 .tool-text {
@@ -130,16 +132,15 @@
         width: 300px;
     }
     
-    .tool-text {
-        display: none;
+    .assessment-tool-button {
+        padding: 10px 15px;
     }
     
-    .assessment-tool-button {
-        padding: 15px;
-        border-radius: 50%;
+    .tool-text {
+        font-size: 14px;
     }
     
     .assessment-tool-button i {
-        font-size: 20px;
+        font-size: 16px;
     }
 } 
