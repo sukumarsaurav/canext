@@ -213,7 +213,7 @@ function renderStep() {
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div id="languageProficiencySection" class="form-group" style="display: ${formData.language === 'none' ? 'none' : 'block'};">
                             <label style="display: block; color: var(--color-burgundy); margin-bottom: 16px;">
                                 Language Proficiency Level
                             </label>
@@ -357,6 +357,15 @@ function handleInputChange(field, value) {
     if (field === 'age') {
         document.getElementById('ageValue').textContent = value;
     }
+    if (field === 'language') {
+        const proficiencySection = document.getElementById('languageProficiencySection');
+        if (value === 'none') {
+            proficiencySection.style.display = 'none';
+            formData.languageScore = ''; // Clear language score when no test is selected
+        } else {
+            proficiencySection.style.display = 'block';
+        }
+    }
 }
 
 // Navigation functions
@@ -402,7 +411,7 @@ function validateStep() {
             if (!formData.language) {
                 isValid = false;
                 errorMessage = 'Please select your language test';
-            } else if (!formData.languageScore) {
+            } else if (formData.language !== 'none' && !formData.languageScore) {
                 isValid = false;
                 errorMessage = 'Please select your language proficiency level';
             }
