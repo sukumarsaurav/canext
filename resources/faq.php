@@ -1,6 +1,26 @@
 <?php
 $page_title = "FAQ | CANEXT Immigration";
 include('../includes/header.php');
+include('../admin/includes/db_connection.php');
+
+// Get FAQ categories
+$sql = "SELECT * FROM faq_categories ORDER BY display_order, name";
+$categories = executeQuery($sql);
+
+// Initialize items array
+$items = [];
+
+// Get all FAQ items if we have categories
+if ($categories && $categories->num_rows > 0) {
+    $sql = "SELECT * FROM faq_items ORDER BY display_order, question";
+    $result = executeQuery($sql);
+    
+    if ($result && $result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $items[$row['category_id']][] = $row;
+        }
+    }
+}
 ?>
 
 <!-- Page Header -->
@@ -21,148 +41,61 @@ include('../includes/header.php');
 <section class="section categories-section">
     <div class="container">
         <h2 class="section-title" data-aos="fade-up">Browse by Category</h2>
+        
+        <?php if ($categories && $categories->num_rows > 0): ?>
         <div class="categories-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 40px;">
-            <a href="#general" class="category-card" data-aos="fade-up" style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-decoration: none; text-align: center;">
-                <i class="fas fa-info-circle" style="font-size: 2rem; color: var(--color-burgundy); margin-bottom: 15px;"></i>
-                <h3 style="color: var(--color-burgundy);">General Questions</h3>
+            <?php 
+            $delay = 0;
+            while ($category = $categories->fetch_assoc()): 
+                $delay += 100;
+            ?>
+            <a href="#category-<?php echo $category['id']; ?>" class="category-card" data-aos="fade-up" data-aos-delay="<?php echo $delay; ?>" style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-decoration: none; text-align: center;">
+                <i class="<?php echo $category['icon']; ?>" style="font-size: 2rem; color: var(--color-burgundy); margin-bottom: 15px;"></i>
+                <h3 style="color: var(--color-burgundy);"><?php echo $category['name']; ?></h3>
             </a>
-            
-            <a href="#express-entry" class="category-card" data-aos="fade-up" data-aos-delay="100" style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-decoration: none; text-align: center;">
-                <i class="fas fa-paper-plane" style="font-size: 2rem; color: var(--color-burgundy); margin-bottom: 15px;"></i>
-                <h3 style="color: var(--color-burgundy);">Express Entry</h3>
-            </a>
-            
-            <a href="#study-work" class="category-card" data-aos="fade-up" data-aos-delay="200" style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-decoration: none; text-align: center;">
-                <i class="fas fa-graduation-cap" style="font-size: 2rem; color: var(--color-burgundy); margin-bottom: 15px;"></i>
-                <h3 style="color: var(--color-burgundy);">Study & Work</h3>
-            </a>
-            
-            <a href="#family" class="category-card" data-aos="fade-up" data-aos-delay="300" style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-decoration: none; text-align: center;">
-                <i class="fas fa-users" style="font-size: 2rem; color: var(--color-burgundy); margin-bottom: 15px;"></i>
-                <h3 style="color: var(--color-burgundy);">Family Immigration</h3>
-            </a>
+            <?php endwhile; ?>
         </div>
+        <?php else: ?>
+        <p class="text-center">No FAQ categories available. Please check back later.</p>
+        <?php endif; ?>
     </div>
 </section>
 
 <!-- FAQ Content Section -->
 <section class="section faq-content" style="background-color: var(--color-cream);">
     <div class="container">
-        <!-- General Questions -->
-        <div id="general" class="faq-category" data-aos="fade-up">
-            <h2 class="section-title">General Questions</h2>
+        <?php 
+        if ($categories && $categories->num_rows > 0):
+            // Reset the category result pointer
+            $categories->data_seek(0);
+            
+            while ($category = $categories->fetch_assoc()): 
+        ?>
+        <!-- <?php echo $category['name']; ?> Questions -->
+        <div id="category-<?php echo $category['id']; ?>" class="faq-category" data-aos="fade-up">
+            <h2 class="section-title"><?php echo $category['name']; ?></h2>
+            
+            <?php if (isset($items[$category['id']]) && !empty($items[$category['id']])): ?>
             <div class="accordion" style="max-width: 800px; margin: 0 auto;">
+                <?php foreach ($items[$category['id']] as $item): ?>
                 <div class="accordion-item" style="background: white; border-radius: 10px; margin-bottom: 15px; overflow: hidden;">
                     <div class="accordion-header" style="padding: 20px; cursor: pointer;">
-                        <h3 style="margin: 0; font-size: 1.1rem;">What are the basic requirements to immigrate to Canada?</h3>
+                        <h3 style="margin: 0; font-size: 1.1rem;"><?php echo $item['question']; ?></h3>
                     </div>
                     <div class="accordion-content" style="padding: 0 20px 20px;">
-                        <p>Basic requirements typically include:</p>
-                        <ul style="list-style: disc; margin-left: 20px;">
-                            <li>Valid passport</li>
-                            <li>Good health and character</li>
-                            <li>Sufficient funds</li>
-                            <li>Language proficiency (English/French)</li>
-                            <li>Education or work experience</li>
-                        </ul>
+                        <?php echo $item['answer']; ?>
                     </div>
                 </div>
-                
-                <div class="accordion-item" style="background: white; border-radius: 10px; margin-bottom: 15px; overflow: hidden;">
-                    <div class="accordion-header" style="padding: 20px; cursor: pointer;">
-                        <h3 style="margin: 0; font-size: 1.1rem;">How long does the immigration process take?</h3>
-                    </div>
-                    <div class="accordion-content" style="padding: 0 20px 20px;">
-                        <p>Processing times vary by program and individual circumstances. Express Entry can take 6-8 months, while family sponsorship might take 12-24 months.</p>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
+            <?php else: ?>
+            <p class="text-center">No questions available for this category.</p>
+            <?php endif; ?>
         </div>
-        
-        <!-- Express Entry Questions -->
-        <div id="express-entry" class="faq-category" data-aos="fade-up" style="margin-top: 60px;">
-            <h2 class="section-title">Express Entry Questions</h2>
-            <div class="accordion" style="max-width: 800px; margin: 0 auto;">
-                <div class="accordion-item" style="background: white; border-radius: 10px; margin-bottom: 15px; overflow: hidden;">
-                    <div class="accordion-header" style="padding: 20px; cursor: pointer;">
-                        <h3 style="margin: 0; font-size: 1.1rem;">What is the minimum CRS score needed?</h3>
-                    </div>
-                    <div class="accordion-content" style="padding: 0 20px 20px;">
-                        <p>The minimum score varies with each draw. Recent draws have ranged from 450-500 points, but this can change based on various factors.</p>
-                    </div>
-                </div>
-                
-                <div class="accordion-item" style="background: white; border-radius: 10px; margin-bottom: 15px; overflow: hidden;">
-                    <div class="accordion-header" style="padding: 20px; cursor: pointer;">
-                        <h3 style="margin: 0; font-size: 1.1rem;">How can I improve my CRS score?</h3>
-                    </div>
-                    <div class="accordion-content" style="padding: 0 20px 20px;">
-                        <p>You can improve your score by:</p>
-                        <ul style="list-style: disc; margin-left: 20px;">
-                            <li>Improving language test scores</li>
-                            <li>Gaining more work experience</li>
-                            <li>Obtaining higher education</li>
-                            <li>Getting a provincial nomination</li>
-                            <li>Obtaining a valid job offer</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Study & Work Questions -->
-        <div id="study-work" class="faq-category" data-aos="fade-up" style="margin-top: 60px;">
-            <h2 class="section-title">Study & Work Questions</h2>
-            <div class="accordion" style="max-width: 800px; margin: 0 auto;">
-                <div class="accordion-item" style="background: white; border-radius: 10px; margin-bottom: 15px; overflow: hidden;">
-                    <div class="accordion-header" style="padding: 20px; cursor: pointer;">
-                        <h3 style="margin: 0; font-size: 1.1rem;">Can I work while studying in Canada?</h3>
-                    </div>
-                    <div class="accordion-content" style="padding: 0 20px 20px;">
-                        <p>Yes, most international students can work up to 20 hours per week during regular academic sessions and full-time during scheduled breaks.</p>
-                    </div>
-                </div>
-                
-                <div class="accordion-item" style="background: white; border-radius: 10px; margin-bottom: 15px; overflow: hidden;">
-                    <div class="accordion-header" style="padding: 20px; cursor: pointer;">
-                        <h3 style="margin: 0; font-size: 1.1rem;">What is a PGWP?</h3>
-                    </div>
-                    <div class="accordion-content" style="padding: 0 20px 20px;">
-                        <p>A Post-Graduation Work Permit (PGWP) allows international graduates to work in Canada for up to 3 years after completing their studies.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Family Immigration Questions -->
-        <div id="family" class="faq-category" data-aos="fade-up" style="margin-top: 60px;">
-            <h2 class="section-title">Family Immigration Questions</h2>
-            <div class="accordion" style="max-width: 800px; margin: 0 auto;">
-                <div class="accordion-item" style="background: white; border-radius: 10px; margin-bottom: 15px; overflow: hidden;">
-                    <div class="accordion-header" style="padding: 20px; cursor: pointer;">
-                        <h3 style="margin: 0; font-size: 1.1rem;">Who can I sponsor?</h3>
-                    </div>
-                    <div class="accordion-content" style="padding: 0 20px 20px;">
-                        <p>You can sponsor:</p>
-                        <ul style="list-style: disc; margin-left: 20px;">
-                            <li>Spouse or common-law partner</li>
-                            <li>Dependent children</li>
-                            <li>Parents and grandparents</li>
-                            <li>Other eligible relatives under specific programs</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="accordion-item" style="background: white; border-radius: 10px; margin-bottom: 15px; overflow: hidden;">
-                    <div class="accordion-header" style="padding: 20px; cursor: pointer;">
-                        <h3 style="margin: 0; font-size: 1.1rem;">What are the income requirements for sponsorship?</h3>
-                    </div>
-                    <div class="accordion-content" style="padding: 0 20px 20px;">
-                        <p>Income requirements vary based on family size and the type of sponsorship. For spouse sponsorship, there is no minimum income requirement, but for parents and grandparents, you must meet minimum necessary income levels.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php 
+            endwhile;
+        endif;
+        ?>
     </div>
 </section>
 

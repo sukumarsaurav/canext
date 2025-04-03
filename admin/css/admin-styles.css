@@ -1258,4 +1258,67 @@ button {
 
 .calendar-nav-btn:hover {
     color: var(--color-burgundy);
+}
+
+/* FAQ Management Styles */
+.icon-selection {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.icon-option {
+    transition: all 0.2s ease;
+}
+
+.icon-option:hover {
+    background-color: #f9f9f9;
+}
+
+.admin-tabs {
+    margin-top: 30px;
+}
+
+.tab-header {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.tab-btn {
+    padding: 10px 20px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-weight: 500;
+    color: #666;
+    border-bottom: 3px solid transparent;
+}
+
+.tab-btn.active {
+    color: var(--color-primary);
+    border-bottom: 3px solid var(--color-primary);
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+.category-questions {
+    margin-bottom: 40px;
+}
+
+.category-questions h3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 15px;
 } 
