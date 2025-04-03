@@ -20,7 +20,7 @@
 
 .assessment-tool-button:hover {
     background-color: var(--color-burgundy);
-    right: -40px;
+    right: 4px;
 }
 
 .tool-text {
