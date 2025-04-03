@@ -56,7 +56,7 @@ if ($active_category_id === 0 && $categories_result && $categories_result->num_r
             <!-- FAQ Category Sidebar -->
             <div class="faq-sidebar">
                 <div class="sticky-sidebar">
-                    <h3 class="sidebar-title">Categories</h3>
+                   
                     <ul class="category-list">
                         <?php 
                         $categories_result->data_seek(0);
@@ -129,11 +129,6 @@ if ($active_category_id === 0 && $categories_result && $categories_result->num_r
     </div>
 </section>
 
-<!-- Add CSS for new FAQ layout -->
-<style>
-    /* FAQ Layout Styles */
-    
-</style>
 
 <!-- Add JavaScript for FAQ interactions -->
 <script>
