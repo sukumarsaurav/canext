@@ -19,4 +19,4 @@ if (count($path_parts) >= 1 && $path_parts[0] === 'immigration-news') {
 
 // For all other pages, include the regular index page content
 include('home.php');
-?> 
+?>
