@@ -44,6 +44,7 @@ if (strpos($current_dir, '/visa-types') !== false ||
     <link rel="stylesheet" href="<?php echo $base_url; ?>/css/animations.css">
     <link rel="stylesheet" href="<?php echo $base_url; ?>/css/header.css">
     <link rel="stylesheet" href="<?php echo $base_url; ?>/css/resources.css">
+    <link rel="stylesheet" href="<?php echo $base_url; ?>/css/assessment-drawer.css">
         
 </head>
 <body>
