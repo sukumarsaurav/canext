@@ -1,6 +1,11 @@
 <?php
 $page_title = "Immigration News | CANEXT Immigration";
 include('../includes/header.php');
+include('../admin/includes/db_connection.php');
+
+// Get published news articles
+$sql = "SELECT * FROM news_articles WHERE status = 'published' ORDER BY publish_date DESC LIMIT 12";
+$result = executeQuery($sql);
 ?>
 
 <!-- Page Header -->
@@ -24,76 +29,31 @@ include('../includes/header.php');
         <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Stay informed about the latest changes and developments in Canadian immigration policies and programs.</p>
         
         <div class="news-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px;">
-            <!-- News Item 1 -->
-            <article class="news-card" data-aos="fade-up" style="background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-                <div class="news-image" style="height: 200px; background-image: url('../images/resources/news1.jpg'); background-size: cover; background-position: center;"></div>
-                <div class="news-content" style="padding: 20px;">
-                    <div class="news-date" style="color: var(--color-burgundy); font-size: 0.9rem; margin-bottom: 10px;">March 15, 2024</div>
-                    <h3 style="color: var(--color-burgundy); margin-bottom: 15px;">Express Entry: Latest Draw Results</h3>
-                    <p>The latest Express Entry draw saw 1,000 candidates invited to apply for permanent residence, with a minimum CRS score of 485.</p>
-                    <a href="#" class="btn btn-secondary" style="margin-top: 15px;">Read More</a>
+            <?php 
+            if ($result && $result->num_rows > 0):
+                $delay = 0;
+                while ($article = $result->fetch_assoc()):
+                    $delay += 100;
+                    $image_url = $article['image'] ? '../images/news/' . $article['image'] : '../images/resources/news-default.jpg';
+            ?>
+                <!-- News Item -->
+                <article class="news-card" data-aos="fade-up" data-aos-delay="<?php echo $delay; ?>" style="background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                    <div class="news-image" style="height: 200px; background-image: url('<?php echo $image_url; ?>'); background-size: cover; background-position: center;"></div>
+                    <div class="news-content" style="padding: 20px;">
+                        <div class="news-date" style="color: var(--color-burgundy); font-size: 0.9rem; margin-bottom: 10px;"><?php echo date('F j, Y', strtotime($article['publish_date'])); ?></div>
+                        <h3 style="color: var(--color-burgundy); margin-bottom: 15px;"><?php echo $article['title']; ?></h3>
+                        <p><?php echo $article['excerpt']; ?></p>
+                        <a href="../immigration-news/<?php echo $article['slug']; ?>" class="btn btn-secondary" style="margin-top: 15px;">Read More</a>
+                    </div>
+                </article>
+            <?php 
+                endwhile;
+            else:
+            ?>
+                <div class="no-articles" style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+                    <p>No news articles available at the moment. Please check back later.</p>
                 </div>
-            </article>
-            
-            <!-- News Item 2 -->
-            <article class="news-card" data-aos="fade-up" data-aos-delay="100" style="background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-                <div class="news-image" style="height: 200px; background-image: url('../images/resources/news2.jpg'); background-size: cover; background-position: center;"></div>
-                <div class="news-content" style="padding: 20px;">
-                    <div class="news-date" style="color: var(--color-burgundy); font-size: 0.9rem; margin-bottom: 10px;">March 10, 2024</div>
-                    <h3 style="color: var(--color-burgundy); margin-bottom: 15px;">New PNP Streams Announced</h3>
-                    <p>Ontario introduces new PNP streams targeting tech workers and entrepreneurs in emerging sectors.</p>
-                    <a href="#" class="btn btn-secondary" style="margin-top: 15px;">Read More</a>
-                </div>
-            </article>
-            
-            <!-- News Item 3 -->
-            <article class="news-card" data-aos="fade-up" data-aos-delay="200" style="background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-                <div class="news-image" style="height: 200px; background-image: url('../images/resources/news3.jpg'); background-size: cover; background-position: center;"></div>
-                <div class="news-content" style="padding: 20px;">
-                    <div class="news-date" style="color: var(--color-burgundy); font-size: 0.9rem; margin-bottom: 10px;">March 5, 2024</div>
-                    <h3 style="color: var(--color-burgundy); margin-bottom: 15px;">Study Permit Updates</h3>
-                    <p>Important changes to study permit requirements and processing for international students.</p>
-                    <a href="#" class="btn btn-secondary" style="margin-top: 15px;">Read More</a>
-                </div>
-            </article>
-        </div>
-    </div>
-</section>
-
-<!-- Policy Updates Section -->
-<section class="section updates-section" style="background-color: var(--color-cream);">
-    <div class="container">
-        <h2 class="section-title" data-aos="fade-up">Policy Updates</h2>
-        <div class="updates-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px;">
-            <!-- Update 1 -->
-            <div class="update-card" data-aos="fade-up" style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-                <h3 style="color: var(--color-burgundy); margin-bottom: 15px;">Express Entry</h3>
-                <ul style="list-style: none; padding: 0;">
-                    <li style="margin-bottom: 15px;">• New occupation-specific draws introduced</li>
-                    <li style="margin-bottom: 15px;">• Changes to CRS points allocation</li>
-                    <li>• Updated processing standards</li>
-                </ul>
-            </div>
-            
-            <!-- Update 2 -->
-            <div class="update-card" data-aos="fade-up" data-aos-delay="100" style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-                <h3 style="color: var(--color-burgundy); margin-bottom: 15px;">Work Permits</h3>
-                <ul style="list-style: none; padding: 0;">
-                    <li style="margin-bottom: 15px;">• LMIA process improvements</li>
-                    <li style="margin-bottom: 15px;">• New open work permit categories</li>
-                    <li>• Employer compliance updates</li>
-                </ul>
-            </div>
-            
-            <!-- Update 3 -->
-            <div class="update-card" data-aos="fade-up" data-aos-delay="200" style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-                <h3 style="color: var(--color-burgundy); margin-bottom: 15px;">Family Sponsorship</h3>
-                <ul style="list-style: none; padding: 0;">
-                    <li style="margin-bottom: 15px;">• Income requirement adjustments</li>
-                    <li style="margin-bottom: 15px;">• Processing time improvements</li>
-                    <li>• New super visa options</li>
-                </ul>
-            </div>
+            <?php endif; ?>
         </div>
     </div>
 </section>

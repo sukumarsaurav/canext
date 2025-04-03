@@ -2,18 +2,23 @@
 // Set default page title if not set
 $page_title = isset($page_title) ? $page_title : "CANEXT | Canadian Immigration Consultancy";
 
-// Determine base URL dynamically based on the current script's location
-$current_dir = dirname($_SERVER['PHP_SELF']);
-$base_url = '';
+// Check if base_url is already set from the including file
+if (!isset($base_url)) {
+    // Determine base URL dynamically based on the current script's location
+    $current_dir = dirname($_SERVER['PHP_SELF']);
+    $base_url = '';
 
-// If we're in a subdirectory
-if (strpos($current_dir, '/visa-types') !== false || 
-    strpos($current_dir, '/blog') !== false || 
-    strpos($current_dir, '/resources') !== false ||
-    strpos($current_dir, '/assessment-calculator') !== false) {
-    $base_url = '..';
-} else {
-    $base_url = '.';
+    // If we're in a subdirectory
+    if (strpos($current_dir, '/visa-types') !== false || 
+        strpos($current_dir, '/blog') !== false || 
+        strpos($current_dir, '/resources') !== false ||
+        strpos($current_dir, '/assessment-calculator') !== false) {
+        $base_url = '..';
+    } else if (strpos($current_dir, '/immigration-news') !== false) {
+        $base_url = ''; // Root-relative for virtual directory
+    } else {
+        $base_url = '.';
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -45,6 +50,7 @@ if (strpos($current_dir, '/visa-types') !== false ||
     <link rel="stylesheet" href="<?php echo $base_url; ?>/css/header.css">
     <link rel="stylesheet" href="<?php echo $base_url; ?>/css/resources.css">
     <link rel="stylesheet" href="<?php echo $base_url; ?>/css/assessment-drawer.css">
+    <link rel="stylesheet" href="<?php echo isset($base_url) ? $base_url : ''; ?>/css/news.css">
         
 </head>
 <body>

@@ -1,0 +1,16 @@
+RewriteEngine On
+RewriteBase /
+
+# If the requested resource exists as a file or directory, serve it directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Otherwise, send all requests to the front controller
+RewriteRule ^(.*)$ index.php [L]
+
+# Handle immigration-news URLs
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^immigration-news/([^/]+)/?$ immigration-news.php [L]
+
+# Other rules... 

@@ -66,6 +66,12 @@ $current_page = basename($_SERVER['PHP_SELF']);
                             <span>Customers</span>
                         </a>
                     </li>
+                    <li class="<?php echo $current_page === 'news.php' ? 'active' : ''; ?>">
+                        <a href="news.php">
+                            <i class="fas fa-newspaper"></i>
+                            <span>News Articles</span>
+                        </a>
+                    </li>
                     <li class="<?php echo $current_page === 'settings.php' ? 'active' : ''; ?>">
                         <a href="settings.php">
                             <i class="fas fa-cog"></i>
