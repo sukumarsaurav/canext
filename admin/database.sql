@@ -153,4 +153,139 @@ INSERT INTO system_settings (setting_key, setting_value, setting_group) VALUES
 ('buffer_time', '15', 'booking'),
 ('video_consultation_price', '150', 'payment'),
 ('phone_consultation_price', '120', 'payment'),
-('in_person_consultation_price', '200', 'payment'); 
+('in_person_consultation_price', '200', 'payment');
+
+-- ======================================================
+-- FAQ TABLES
+-- ======================================================
+
+-- FAQ Categories Table
+CREATE TABLE IF NOT EXISTS `faq_categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `icon` varchar(50) NOT NULL,
+  `display_order` int(11) NOT NULL DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- FAQ Items Table
+CREATE TABLE IF NOT EXISTS `faq_items` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `category_id` int(11) NOT NULL,
+  `question` varchar(255) NOT NULL,
+  `answer` text NOT NULL,
+  `display_order` int(11) NOT NULL DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `category_id` (`category_id`),
+  CONSTRAINT `faq_items_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `faq_categories` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ======================================================
+-- BLOG TABLES
+-- ======================================================
+
+-- Blog Categories Table
+CREATE TABLE IF NOT EXISTS `blog_categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `icon` varchar(50) NOT NULL DEFAULT 'fas fa-newspaper',
+  `display_order` int(11) NOT NULL DEFAULT 0,
+  `post_count` int(11) NOT NULL DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `slug` (`slug`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Blog Posts Table
+CREATE TABLE IF NOT EXISTS `blog_posts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `category_id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `excerpt` text,
+  `content` text NOT NULL,
+  `featured_image` varchar(255) DEFAULT NULL,
+  `author` varchar(100) DEFAULT 'CANEXT Team',
+  `status` enum('draft','published') NOT NULL DEFAULT 'draft',
+  `publish_date` datetime DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `slug` (`slug`),
+  KEY `category_id` (`category_id`),
+  CONSTRAINT `blog_posts_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `blog_categories` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Create a settings table for the blog
+CREATE TABLE IF NOT EXISTS `blog_settings` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `setting_name` varchar(100) NOT NULL,
+  `setting_value` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `setting_name` (`setting_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Create a comments table for blog posts
+CREATE TABLE IF NOT EXISTS `blog_comments` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `post_id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `website` varchar(255) DEFAULT NULL,
+  `comment` text NOT NULL,
+  `status` enum('pending','approved','rejected') NOT NULL DEFAULT 'pending',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `post_id` (`post_id`),
+  CONSTRAINT `blog_comments_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `blog_posts` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Create a table for newsletter subscribers
+CREATE TABLE IF NOT EXISTS `newsletter_subscribers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(100) NOT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `status` enum('active','unsubscribed') NOT NULL DEFAULT 'active',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Create a table for blog post views tracking
+CREATE TABLE IF NOT EXISTS `blog_post_views` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `post_id` int(11) NOT NULL,
+  `ip_address` varchar(45) NOT NULL,
+  `viewed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `post_id` (`post_id`),
+  CONSTRAINT `blog_post_views_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `blog_posts` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Create a table for blog post tags
+CREATE TABLE IF NOT EXISTS `blog_tags` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `slug` varchar(50) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `slug` (`slug`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Create a junction table for post-tag relationships
+CREATE TABLE IF NOT EXISTS `blog_post_tags` (
+  `post_id` int(11) NOT NULL,
+  `tag_id` int(11) NOT NULL,
+  PRIMARY KEY (`post_id`,`tag_id`),
+  KEY `tag_id` (`tag_id`),
+  CONSTRAINT `blog_post_tags_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `blog_posts` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `blog_post_tags_ibfk_2` FOREIGN KEY (`tag_id`) REFERENCES `blog_tags` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4; 

@@ -1,12 +1,7 @@
 // Initialize AOS (Animate On Scroll)
 document.addEventListener('DOMContentLoaded', function() {
-    AOS.init({
-        duration: 800,
-        easing: 'ease-in-out',
-        once: true,
-        mirror: false
-    });
-
+    // AOS is initialized in utils.js
+    
     // Handle any accordion functionality in FAQ page
     const accordionItems = document.querySelectorAll('.accordion-item');
     

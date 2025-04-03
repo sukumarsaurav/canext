@@ -42,7 +42,9 @@ if (!isset($base_url)) {
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
     
     <!-- AOS Animation CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <!-- Move JS libraries to the end of head to ensure they load before other scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="<?php echo $base_url; ?>/css/styles.css">
@@ -52,6 +54,16 @@ if (!isset($base_url)) {
     <link rel="stylesheet" href="<?php echo $base_url; ?>/css/assessment-drawer.css">
     <link rel="stylesheet" href="<?php echo isset($base_url) ? $base_url : ''; ?>/css/news.css">
         
+    <!-- Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+    <!-- Load utils.js before other scripts -->
+    <script src="<?php echo $base_url; ?>/js/utils.js"></script>
+
+    <!-- Your custom scripts should come after utils.js -->
+    <script src="<?php echo $base_url; ?>/js/main.js" defer></script>
+    <script src="<?php echo $base_url; ?>/js/resources.js" defer></script>
 </head>
 <body>
     <!-- Drawer Overlay -->

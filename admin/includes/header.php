@@ -72,6 +72,12 @@ $current_page = basename($_SERVER['PHP_SELF']);
                             <span>News Articles</span>
                         </a>
                     </li>
+                    <li class="<?php echo $current_page === 'blog.php' || $current_page === 'blog_category_edit.php' || $current_page === 'blog_post_edit.php' ? 'active' : ''; ?>">
+                        <a href="blog.php">
+                            <i class="fas fa-blog"></i>
+                            <span>Blog Manager</span>
+                        </a>
+                    </li>
                     <li class="<?php echo $current_page === 'faq.php' ? 'active' : ''; ?>">
                         <a href="faq.php">
                             <i class="fas fa-question-circle"></i>

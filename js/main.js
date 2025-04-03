@@ -3,14 +3,8 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize AOS Animation
-    AOS.init({
-        duration: 800,
-        easing: 'ease',
-        once: true,
-        offset: 100
-    });
-
+    // AOS is initialized in utils.js
+    
     // Mobile Navigation Toggle
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
