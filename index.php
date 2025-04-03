@@ -209,87 +209,10 @@ include('includes/header.php');
             </button>
         </div>
         
-        <!-- Add this for the sticky contact button as shown in image -->
-        <div class="sticky-contact" style="position: fixed; right: 0; top: 50%; transform: translateY(-50%); background-color: var(--color-burgundy); color: white; padding: 15px 10px; writing-mode: vertical-lr; text-orientation: mixed; transform: rotate(180deg); border-radius: 5px 0 0 5px; font-weight: 600; cursor: pointer; z-index: 1000;">
-            Book Consultation
-        </div>
+  
     </div>
 </section>
 
-<!-- Script for slider functionality -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const container = document.querySelector('.testimonials-container');
-    const cards = document.querySelectorAll('.testimonial-card');
-    const prevBtn = document.querySelector('.nav-btn.prev');
-    const nextBtn = document.querySelector('.nav-btn.next');
-    
-    let currentIndex = 0;
-    const maxIndex = Math.max(0, cards.length - (window.innerWidth >= 1200 ? 3 : window.innerWidth >= 768 ? 2 : 1));
-    
-    // Initially hide prev button if at start
-    prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
-    prevBtn.style.pointerEvents = currentIndex === 0 ? 'none' : 'auto';
-    
-    // Initially hide next button if at end or not enough cards
-    nextBtn.style.opacity = currentIndex >= maxIndex ? '0.5' : '1';
-    nextBtn.style.pointerEvents = currentIndex >= maxIndex ? 'none' : 'auto';
-    
-    prevBtn.addEventListener('click', function() {
-        if (currentIndex > 0) {
-            currentIndex--;
-            updateCardsPosition();
-        }
-    });
-    
-    nextBtn.addEventListener('click', function() {
-        if (currentIndex < maxIndex) {
-            currentIndex++;
-            updateCardsPosition();
-        }
-    });
-    
-    function updateCardsPosition() {
-        const cardWidth = cards[0].offsetWidth + 25; // card width + gap
-        
-        cards.forEach((card, index) => {
-            card.style.transform = `translateX(${-currentIndex * cardWidth}px)`;
-            card.style.transition = 'transform 0.3s ease-in-out';
-        });
-        
-        // Update button states
-        prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
-        prevBtn.style.pointerEvents = currentIndex === 0 ? 'none' : 'auto';
-        
-        nextBtn.style.opacity = currentIndex >= maxIndex ? '0.5' : '1';
-        nextBtn.style.pointerEvents = currentIndex >= maxIndex ? 'none' : 'auto';
-    }
-    
-    // Handle responsive behavior
-    window.addEventListener('resize', function() {
-        const newMaxIndex = Math.max(0, cards.length - (window.innerWidth >= 1200 ? 3 : window.innerWidth >= 768 ? 2 : 1));
-        if (currentIndex > newMaxIndex) {
-            currentIndex = newMaxIndex;
-        }
-        updateCardsPosition();
-    });
-    
-    // Add some styles for smooth sliding
-    cards.forEach(card => {
-        card.style.flex = '0 0 auto';
-        card.style.transition = 'transform 0.3s ease-in-out';
-    });
-    
-    // Make container a flex container with overflow hidden
-    container.style.position = 'relative';
-    container.style.overflow = 'hidden';
-    
-    // Make sticky button go to contact section
-    document.querySelector('.sticky-contact').addEventListener('click', function() {
-        document.getElementById('contact').scrollIntoView({behavior: 'smooth'});
-    });
-});
-</script>
 
 <!-- Call to Action Section -->
 <section class="section cta" style="background-image: linear-gradient(rgba(109, 35, 35, 0.9), rgba(109, 35, 35, 0.9)), url('images/cta-background.jpg'); background-size: cover; background-position: center; padding: 100px 0; color: var(--color-light); text-align: center;">
