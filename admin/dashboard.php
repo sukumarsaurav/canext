@@ -184,4 +184,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
+<!-- Add this before the closing </body> tag -->
+<script src="js/calendar.js"></script>
+
 <?php include('includes/footer.php'); ?> 

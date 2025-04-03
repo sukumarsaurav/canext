@@ -1167,11 +1167,79 @@ button {
     color: #666;
 }
 
-/* Mini calendar styles */
+/* Mini Calendar Styles */
 .mini-calendar {
     width: 100%;
+    padding: 15px;
 }
 
+.calendar-header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-weight: 500;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.weekday {
+    padding: 5px;
+    font-size: 12px;
+}
+
+.calendar-body {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.calendar-row {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.calendar-day {
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    font-size: 14px;
+    position: relative;
+}
+
+.calendar-day.empty {
+    background-color: transparent;
+}
+
+.calendar-day.today {
+    background-color: var(--color-burgundy);
+    color: white;
+}
+
+.booking-count {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    background-color: var(--color-burgundy);
+    color: white;
+    font-size: 10px;
+    padding: 2px 4px;
+    border-radius: 10px;
+    min-width: 16px;
+    text-align: center;
+}
+
+.calendar-day.today .booking-count {
+    background-color: white;
+    color: var(--color-burgundy);
+}
+
+/* Add this to fix the calendar navigation */
 .calendar-nav {
     display: flex;
     align-items: center;
