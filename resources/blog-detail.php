@@ -46,6 +46,9 @@ include('../includes/header.php');
 
 <!-- Page Header -->
 <section class="page-header" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../<?php echo !empty($post['featured_image']) ? $post['featured_image'] : 'images/blog/default.jpg'; ?>'); background-size: cover; background-position: center; padding: 100px 0; color: var(--color-light); text-align: center;">
+<div style="position: absolute; width: 300px; height: 300px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.1); top: -100px; left: -100px;"></div>
+    <div style="position: absolute; width: 200px; height: 200px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.1); bottom: -50px; right: 10%; animation: pulse 4s infinite alternate;"></div>
+    <div style="position: absolute; width: 100px; height: 100px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.1); top: 30%; right: 20%; animation: pulse 3s infinite alternate;"></div>
     <div class="container">
         <h1 data-aos="fade-up"><?php echo $post['title']; ?></h1>
         <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="100">

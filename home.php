@@ -52,9 +52,39 @@ include('includes/header.php');
                     <a href="visas.php?type=express-entry" class="btn btn-secondary">Learn More</a>
                 </div>
             </div>
+            
+            <!-- Provincial Nominee -->
+            <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                <div class="service-image" style="background-image: url('images/services/provincial-nominee.jpg')"></div>
+                <div class="service-content">
+                    <h3 class="service-title">Provincial Nominee</h3>
+                    <p class="service-description">Leverage provincial immigration programs tailored to specific regions' needs and boost your chances of permanent residence.</p>
+                    <a href="visas.php?type=provincial-nominee" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+            
+            <!-- Family Sponsorship -->
+            <div class="service-card" data-aos="fade-up" data-aos-delay="600">
+                <div class="service-image" style="background-image: url('images/services/family-sponsorship.jpg')"></div>
+                <div class="service-content">
+                    <h3 class="service-title">Family Sponsorship</h3>
+                    <p class="service-description">Reunite with your loved ones by sponsoring family members for Canadian permanent residence with our expert guidance.</p>
+                    <a href="visas.php?type=family-sponsorship" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+            
+            <!-- Visitor Visa -->
+            <div class="service-card" data-aos="fade-up" data-aos-delay="700">
+                <div class="service-image" style="background-image: url('images/services/visitor-visa.jpg')"></div>
+                <div class="service-content">
+                    <h3 class="service-title">Visitor Visa</h3>
+                    <p class="service-description">Visit Canada for tourism, business meetings, or family visits with our comprehensive visitor visa application support.</p>
+                    <a href="visas.php?type=visitor-visa" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
         </div>
         
-        <div class="text-center" data-aos="fade-up" data-aos-delay="500" style="margin-top: 40px; text-align: center;">
+        <div class="text-center" data-aos="fade-up" data-aos-delay="800" style="margin-top: 40px; text-align: center;">
             <a href="visas.php" class="btn btn-primary">View All Services</a>
         </div>
     </div>
@@ -120,7 +150,7 @@ include('includes/header.php');
                 </div>
                 <h3 class="tool-title">Visa Eligibility Calculator</h3>
                 <p>Quickly determine if you qualify for various Canadian immigration programs based on your profile.</p>
-                <a href="assessment-tools.php#eligibility" class="btn btn-primary" style="margin-top: 20px;">Check Eligibility</a>
+                <a href="assessment-calculator/eligibility-calculator.php" class="btn btn-primary" style="margin-top: 20px;">Check Eligibility</a>
             </div>
             
             <!-- CRS Calculator -->
@@ -130,7 +160,7 @@ include('includes/header.php');
                 </div>
                 <h3 class="tool-title">CRS Score Calculator</h3>
                 <p>Calculate your Comprehensive Ranking System score for Express Entry applications.</p>
-                <a href="assessment-tools.php#crs" class="btn btn-primary" style="margin-top: 20px;">Calculate Score</a>
+                <a href="assessment-calculator/crs-score-calculator.php" class="btn btn-primary" style="margin-top: 20px;">Calculate Score</a>
             </div>
             
             <!-- Study Permit Checker -->
@@ -140,7 +170,7 @@ include('includes/header.php');
                 </div>
                 <h3 class="tool-title">Study Permit Checker</h3>
                 <p>Verify if you meet the requirements for a Canadian study permit and what documents you'll need.</p>
-                <a href="assessment-tools.php#study" class="btn btn-primary" style="margin-top: 20px;">Check Requirements</a>
+                <a href="assessment-calculator/study-permit-checker.php" class="btn btn-primary" style="margin-top: 20px;">Check Requirements</a>
             </div>
         </div>
     </div>
