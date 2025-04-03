@@ -143,22 +143,35 @@
         background-color: var(--color-burgundy);
         color: var(--color-light);
         border: none;
-        padding: 12px 15px;
+        padding: 12px 20px;
         border-radius: 8px 0 0 8px;
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 12px;
         cursor: pointer;
         box-shadow: -3px 3px 10px rgba(0, 0, 0, 0.2);
         transition: all 0.3s ease;
+        white-space: nowrap;
     }
     
     .assessment-tools-button:hover {
-        background-color: #5c1a1a; /* Darker shade of burgundy */
+        background-color: #5c1a1a;
     }
     
     .assessment-tools-button i {
         font-size: 18px;
+        display: none; /* Hide icon by default on large screens */
+    }
+    
+    .button-text {
+        transform: rotate(-90deg);
+        transform-origin: center;
+        margin: 0;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        transform: rotate(180deg);
     }
     
     /* Menu Styles */
@@ -220,6 +233,7 @@
         display: flex;
         flex-direction: column;
         gap: 15px;
+        flex-grow: 1;
     }
     
     .assessment-menu-item {
@@ -264,6 +278,7 @@
         }
         
         .assessment-tools-button i {
+            display: block; /* Show icon on mobile screens */
             margin: 0;
         }
     }
