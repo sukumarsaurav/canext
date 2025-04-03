@@ -1,0 +1,243 @@
+/* FAQ Layout Styles */
+.faq-section {
+    background-color: #f9f9f9;
+    padding: 60px 0;
+}
+
+.faq-container {
+    display: flex;
+    gap: 30px;
+}
+
+/* Desktop Sidebar Styles */
+.faq-sidebar {
+    width: 300px;
+    flex-shrink: 0;
+}
+
+.sticky-sidebar {
+    position: sticky;
+    top: 100px;
+}
+
+.sidebar-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: var(--color-burgundy);
+    font-weight: 600;
+}
+
+.category-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.category-item {
+    padding: 15px;
+    background-color: white;
+    border-left: 4px solid transparent;
+    margin-bottom: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.category-item i {
+    font-size: 18px;
+    color: var(--color-burgundy);
+    width: 24px;
+    text-align: center;
+}
+
+.category-name {
+    font-size: 16px;
+    color: #333;
+}
+
+.category-item:hover {
+    background-color: #f5f5f5;
+}
+
+.category-item.active {
+    border-left-color: var(--color-burgundy);
+    background-color: #f0f0f0;
+}
+
+.category-item.active .category-name {
+    font-weight: 600;
+    color: var(--color-burgundy);
+}
+
+/* Mobile Category Navigation */
+.mobile-category-nav {
+    display: none;
+    margin-bottom: 30px;
+}
+
+.category-icons-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 10px 0;
+    justify-content: flex-start;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.category-icons-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* FAQ Content Styles */
+.faq-content {
+    flex-grow: 1;
+}
+
+.faq-category-content {
+    background-color: white;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+}
+
+.category-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    color: var(--color-burgundy);
+}
+
+.faq-item {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.faq-question {
+    position: relative;
+    padding: 15px 40px 15px 0;
+    font-weight: 500;
+    font-size: 17px;
+    cursor: pointer;
+    color: #333;
+}
+
+.toggle-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .toggle-icon {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.faq-answer {
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.faq-item.active .faq-answer {
+    padding: 0 0 20px 0;
+    max-height: 1000px;
+    opacity: 1;
+}
+
+/* CTA Section Styles */
+.cta-section {
+    padding: 80px 0;
+    text-align: center;
+    background-color: var(--color-burgundy);
+}
+
+.cta-section .section-title {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.cta-section .section-subtitle {
+    font-size: 18px;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.cta-buttons .btn {
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.btn-light {
+    background-color: var(--color-light);
+    color: var(--color-burgundy);
+    border: 2px solid var(--color-light);
+}
+
+.btn-light:hover {
+    background-color: transparent;
+    color: var(--color-light);
+}
+
+.btn-outline-light {
+    background-color: transparent;
+    color: var(--color-light);
+    border: 2px solid var(--color-light);
+}
+
+.btn-outline-light:hover {
+    background-color: var(--color-light);
+    color: var(--color-burgundy);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .faq-container {
+        flex-direction: column;
+    }
+    
+    .faq-sidebar {
+        display: none;
+    }
+    
+    .mobile-category-nav {
+        display: block;
+    }
+    
+    .faq-section {
+        padding: 40px 0;
+    }
+    
+    .faq-category-content {
+        padding: 20px 15px;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        gap: 15px;
+        padding: 0 20px;
+    }
+
+    .cta-buttons .btn {
+        width: 100%;
+    }
+} 

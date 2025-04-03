@@ -53,6 +53,7 @@ if (!isset($base_url)) {
     <link rel="stylesheet" href="<?php echo $base_url; ?>/css/resources.css">
     <link rel="stylesheet" href="<?php echo $base_url; ?>/css/assessment-drawer.css">
     <link rel="stylesheet" href="<?php echo isset($base_url) ? $base_url : ''; ?>/css/news.css">
+    <link rel="stylesheet" href="<?php echo $base_url; ?>/css/faq.css">
         
     <!-- Libraries -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
