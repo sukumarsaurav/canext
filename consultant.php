@@ -31,174 +31,187 @@ include('includes/header.php');
                 <span class="step-text" style="margin-left: 10px; color: #666;">Confirmation</span>
             </div>
         </div>
+        
+        <?php if(isset($_SESSION['booking_error'])): ?>
+            <div class="alert alert-danger" style="max-width: 800px; margin: 0 auto 30px; padding: 15px; background-color: #f8d7da; color: #721c24; border-radius: 5px; text-align: center;">
+                <?php echo $_SESSION['booking_error']; unset($_SESSION['booking_error']); ?>
+            </div>
+        <?php endif; ?>
 
-        <h2 class="section-title" style="text-align: center; margin-bottom: 40px;">Select Consultation Type and Time</h2>
-
-        <!-- Booking Form -->
-        <form id="consultationForm" action="process_booking.php" method="POST">
-            <input type="hidden" id="selectedConsultationType" name="consultation_type" value="">
-            <input type="hidden" id="currentStep" name="current_step" value="1">
-
-            <!-- Consultation Options -->
-            <div class="consultation-options" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 40px;">
+        <div class="booking-container" style="max-width: 800px; margin: 0 auto;">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 40px;">Select Consultation Type</h2>
+            
+            <!-- Consultation Types -->
+            <div class="consultation-types" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin-bottom: 40px;">
                 <!-- Video Consultation -->
-                <div class="consultation-card" style="background: white; border: 2px solid transparent; border-radius: 10px; padding: 25px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                <div class="consultation-type" data-type="Video Consultation" style="background: white; border-radius: 10px; padding: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); cursor: pointer; transition: transform 0.3s, box-shadow 0.3s;" data-aos="fade-up">
                     <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                        <div style="width: 40px; height: 40px; background-color: var(--color-cream); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
-                            <i class="fas fa-video" style="color: var(--color-burgundy);"></i>
+                        <div style="width: 50px; height: 50px; background-color: var(--color-cream); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                            <i class="fas fa-video" style="color: var(--color-burgundy); font-size: 24px;"></i>
                         </div>
-                        <div>
-                            <h3 style="margin: 0; color: var(--color-dark);">Video Consultation</h3>
-                            <span style="color: var(--color-burgundy); font-weight: 600;">$150</span>
-                        </div>
+                        <h3 style="margin: 0; font-size: 18px; color: var(--color-dark);">Video Consultation</h3>
                     </div>
-                    <p style="margin: 0 0 15px 0; color: #666;">Meet with a consultant via video call</p>
-                    <div style="display: flex; align-items: center;">
-                        <i class="far fa-clock" style="color: var(--color-burgundy); margin-right: 8px;"></i>
-                        <span>45 minutes</span>
+                    <p style="margin-bottom: 15px; color: #666; font-size: 14px;">Meet with our consultant via video call from anywhere in the world for personalized advice.</p>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-weight: 600; color: var(--color-dark);">C$150</span>
+                        <span style="font-size: 14px; color: #666;">60 minutes</span>
                     </div>
                 </div>
-
+                
                 <!-- Phone Consultation -->
-                <div class="consultation-card" style="background: white; border: 2px solid transparent; border-radius: 10px; padding: 25px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                <div class="consultation-type" data-type="Phone Consultation" style="background: white; border-radius: 10px; padding: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); cursor: pointer; transition: transform 0.3s, box-shadow 0.3s;" data-aos="fade-up" data-aos-delay="100">
                     <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                        <div style="width: 40px; height: 40px; background-color: var(--color-cream); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
-                            <i class="fas fa-phone-alt" style="color: var(--color-burgundy);"></i>
+                        <div style="width: 50px; height: 50px; background-color: var(--color-cream); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                            <i class="fas fa-phone-alt" style="color: var(--color-burgundy); font-size: 24px;"></i>
                         </div>
-                        <div>
-                            <h3 style="margin: 0; color: var(--color-dark);">Phone Consultation</h3>
-                            <span style="color: var(--color-burgundy); font-weight: 600;">$120</span>
-                        </div>
+                        <h3 style="margin: 0; font-size: 18px; color: var(--color-dark);">Phone Consultation</h3>
                     </div>
-                    <p style="margin: 0 0 15px 0; color: #666;">Speak with a consultant over the phone</p>
-                    <div style="display: flex; align-items: center;">
-                        <i class="far fa-clock" style="color: var(--color-burgundy); margin-right: 8px;"></i>
-                        <span>45 minutes</span>
+                    <p style="margin-bottom: 15px; color: #666; font-size: 14px;">Speak directly with our immigration expert via phone call for convenient guidance.</p>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-weight: 600; color: var(--color-dark);">C$120</span>
+                        <span style="font-size: 14px; color: #666;">45 minutes</span>
                     </div>
                 </div>
-
+                
                 <!-- In-Person Consultation -->
-                <div class="consultation-card" style="background: white; border: 2px solid transparent; border-radius: 10px; padding: 25px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                <div class="consultation-type" data-type="In-Person Consultation" style="background: white; border-radius: 10px; padding: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); cursor: pointer; transition: transform 0.3s, box-shadow 0.3s;" data-aos="fade-up" data-aos-delay="200">
                     <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                        <div style="width: 40px; height: 40px; background-color: var(--color-cream); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
-                            <i class="fas fa-user" style="color: var(--color-burgundy);"></i>
+                        <div style="width: 50px; height: 50px; background-color: var(--color-cream); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                            <i class="fas fa-user" style="color: var(--color-burgundy); font-size: 24px;"></i>
                         </div>
-                        <div>
-                            <h3 style="margin: 0; color: var(--color-dark);">In-Person Consultation</h3>
-                            <span style="color: var(--color-burgundy); font-weight: 600;">$200</span>
-                        </div>
+                        <h3 style="margin: 0; font-size: 18px; color: var(--color-dark);">In-Person Consultation</h3>
                     </div>
-                    <p style="margin: 0 0 15px 0; color: #666;">Meet with a consultant at our office</p>
-                    <div style="display: flex; align-items: center;">
-                        <i class="far fa-clock" style="color: var(--color-burgundy); margin-right: 8px;"></i>
-                        <span>60 minutes</span>
+                    <p style="margin-bottom: 15px; color: #666; font-size: 14px;">Visit our office in Toronto for a face-to-face meeting with our licensed consultant.</p>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-weight: 600; color: var(--color-dark);">C$200</span>
+                        <span style="font-size: 14px; color: #666;">60 minutes</span>
                     </div>
                 </div>
             </div>
-
+            
             <!-- Date and Time Selection -->
-            <div class="datetime-selection" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 800px; margin: 0 auto;">
+            <div id="dateTimeSelection" style="display: none;">
+                <h3 style="margin-bottom: 20px; text-align: center; color: var(--color-dark);">Select Date and Time</h3>
+                
                 <!-- Date Selection -->
-                <div class="date-select">
-                    <label style="display: block; margin-bottom: 10px; color: var(--color-dark); font-weight: 500;">Select Date</label>
-                    <input type="date" id="consultationDate" name="consultation_date" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-family: inherit;" required>
-                    <p style="margin-top: 8px; color: #666; font-size: 0.9em;">Consultations available Monday to Friday</p>
+                <div class="date-selection" style="margin-bottom: 30px;">
+                    <label style="display: block; margin-bottom: 10px; color: var(--color-dark); font-weight: 500;">Select Date:</label>
+                    <input type="date" id="consultationDate" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-family: inherit;" min="<?php echo date('Y-m-d'); ?>" max="<?php echo date('Y-m-d', strtotime('+60 days')); ?>">
                 </div>
-
-                <!-- Time Selection -->
-                <div class="time-select">
-                    <label style="display: block; margin-bottom: 10px; color: var(--color-dark); font-weight: 500;">Select Time</label>
-                    <select id="consultationTime" name="consultation_time" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-family: inherit;" required>
-                        <option value="">Select a time slot</option>
-                        <option value="09:00">9:00 AM</option>
-                        <option value="10:00">10:00 AM</option>
-                        <option value="11:00">11:00 AM</option>
-                        <option value="13:00">1:00 PM</option>
-                        <option value="14:00">2:00 PM</option>
-                        <option value="15:00">3:00 PM</option>
-                        <option value="16:00">4:00 PM</option>
-                    </select>
-                    <p style="margin-top: 8px; color: #666; font-size: 0.9em;">All times are in Eastern Time (ET)</p>
+                
+                <!-- Time Slots -->
+                <div class="time-selection" style="margin-bottom: 30px;">
+                    <label style="display: block; margin-bottom: 10px; color: var(--color-dark); font-weight: 500;">Select Time:</label>
+                    <div class="time-slots" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 15px;">
+                        <div class="time-slot" data-time="09:00:00" style="text-align: center; padding: 10px; border: 1px solid #ddd; border-radius: 5px; cursor: pointer; transition: all 0.3s;">9:00 AM</div>
+                        <div class="time-slot" data-time="10:00:00" style="text-align: center; padding: 10px; border: 1px solid #ddd; border-radius: 5px; cursor: pointer; transition: all 0.3s;">10:00 AM</div>
+                        <div class="time-slot" data-time="11:00:00" style="text-align: center; padding: 10px; border: 1px solid #ddd; border-radius: 5px; cursor: pointer; transition: all 0.3s;">11:00 AM</div>
+                        <div class="time-slot" data-time="12:00:00" style="text-align: center; padding: 10px; border: 1px solid #ddd; border-radius: 5px; cursor: pointer; transition: all 0.3s;">12:00 PM</div>
+                        <div class="time-slot" data-time="13:00:00" style="text-align: center; padding: 10px; border: 1px solid #ddd; border-radius: 5px; cursor: pointer; transition: all 0.3s;">1:00 PM</div>
+                        <div class="time-slot" data-time="14:00:00" style="text-align: center; padding: 10px; border: 1px solid #ddd; border-radius: 5px; cursor: pointer; transition: all 0.3s;">2:00 PM</div>
+                        <div class="time-slot" data-time="15:00:00" style="text-align: center; padding: 10px; border: 1px solid #ddd; border-radius: 5px; cursor: pointer; transition: all 0.3s;">3:00 PM</div>
+                        <div class="time-slot" data-time="16:00:00" style="text-align: center; padding: 10px; border: 1px solid #ddd; border-radius: 5px; cursor: pointer; transition: all 0.3s;">4:00 PM</div>
+                    </div>
+                </div>
+                
+                <!-- Error Message -->
+                <div id="errorMessage" style="display: none; color: #dc3545; text-align: center; margin: 20px auto 0; padding: 10px; border-radius: 5px; background-color: #ffe6e6;"></div>
+                
+                <!-- Continue Button -->
+                <div class="booking-navigation" style="text-align: center; margin-top: 30px;">
+                    <button id="continueBtn" class="btn btn-primary" style="min-width: 150px;" disabled>Continue</button>
                 </div>
             </div>
-
-            <!-- Error Message -->
-            <div id="errorMessage" style="display: none; color: #dc3545; text-align: center; margin: 20px auto 0; max-width: 800px; padding: 10px; border-radius: 5px; background-color: #ffe6e6;"></div>
-
-            <!-- Navigation Buttons -->
-            <div class="booking-navigation" style="display: flex; justify-content: flex-end; margin-top: 40px; max-width: 800px; margin-left: auto; margin-right: auto;">
-                <button type="button" id="continueBtn" class="btn btn-primary" style="min-width: 150px;">Continue</button>
-            </div>
-        </form>
+        </div>
     </div>
 </section>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const consultationCards = document.querySelectorAll('.consultation-card');
-    const consultationForm = document.getElementById('consultationForm');
-    const selectedConsultationType = document.getElementById('selectedConsultationType');
+    const consultationTypes = document.querySelectorAll('.consultation-type');
+    const dateTimeSelection = document.getElementById('dateTimeSelection');
     const consultationDate = document.getElementById('consultationDate');
-    const consultationTime = document.getElementById('consultationTime');
+    const timeSlots = document.querySelectorAll('.time-slot');
     const continueBtn = document.getElementById('continueBtn');
     const errorMessage = document.getElementById('errorMessage');
-
-    // Set minimum date to today
-    const today = new Date().toISOString().split('T')[0];
-    consultationDate.min = today;
-
-    // Handle consultation card selection
-    consultationCards.forEach(card => {
-        card.addEventListener('click', function() {
-            // Remove active state from all cards
-            consultationCards.forEach(c => {
-                c.style.borderColor = 'transparent';
-                c.style.backgroundColor = 'white';
-            });
+    
+    let selectedType = '';
+    let selectedTime = '';
+    
+    // Select consultation type
+    consultationTypes.forEach(type => {
+        type.addEventListener('click', function() {
+            // Remove selected class from all types
+            consultationTypes.forEach(t => t.style.boxShadow = '0 5px 15px rgba(0,0,0,0.05)');
             
-            // Add active state to selected card
-            this.style.borderColor = 'var(--color-burgundy)';
-            this.style.backgroundColor = 'var(--color-cream)';
-
-            // Store selected consultation type
-            const consultationType = this.querySelector('h3').textContent;
-            selectedConsultationType.value = consultationType;
+            // Add selected class to clicked type
+            this.style.boxShadow = '0 5px 20px rgba(0,0,0,0.15)';
+            selectedType = this.getAttribute('data-type');
+            
+            // Show date and time selection
+            dateTimeSelection.style.display = 'block';
+            
+            // Scroll to date and time selection
+            dateTimeSelection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
     });
-
-    // Handle form submission
-    continueBtn.addEventListener('click', function() {
-        // Validate all required fields
-        if (!selectedConsultationType.value) {
-            showError('Please select a consultation type');
-            return;
-        }
-
-        if (!consultationDate.value) {
-            showError('Please select a date');
-            return;
-        }
-
-        if (!consultationTime.value) {
-            showError('Please select a time');
-            return;
-        }
-
-        // Validate selected date is not a weekend
-        const selectedDate = new Date(consultationDate.value);
-        if (selectedDate.getDay() === 0 || selectedDate.getDay() === 6) {
-            showError('Please select a weekday (Monday to Friday)');
-            return;
-        }
-
-        // If all validations pass, proceed to next step
-        window.location.href = 'consultant_details.php?' + new URLSearchParams({
-            type: selectedConsultationType.value,
-            date: consultationDate.value,
-            time: consultationTime.value
-        }).toString();
+    
+    // Date input change
+    consultationDate.addEventListener('change', function() {
+        // Reset time slot selection
+        timeSlots.forEach(slot => slot.classList.remove('selected'));
+        timeSlots.forEach(slot => slot.style.backgroundColor = '');
+        timeSlots.forEach(slot => slot.style.color = '');
+        timeSlots.forEach(slot => slot.style.borderColor = '#ddd');
+        
+        selectedTime = '';
+        continueBtn.disabled = true;
+        
+        // In a real app, you would check availability from database
+        // For this demo, we'll just enable all time slots
+        timeSlots.forEach(slot => {
+            slot.style.display = 'block';
+        });
     });
-
+    
+    // Select time slot
+    timeSlots.forEach(slot => {
+        slot.addEventListener('click', function() {
+            if (consultationDate.value === '') {
+                showError('Please select a date first');
+                return;
+            }
+            
+            // Remove selected class from all slots
+            timeSlots.forEach(s => s.classList.remove('selected'));
+            timeSlots.forEach(s => s.style.backgroundColor = '');
+            timeSlots.forEach(s => s.style.color = '');
+            timeSlots.forEach(s => s.style.borderColor = '#ddd');
+            
+            // Add selected class to clicked slot
+            this.classList.add('selected');
+            this.style.backgroundColor = 'var(--color-burgundy)';
+            this.style.color = 'white';
+            this.style.borderColor = 'var(--color-burgundy)';
+            
+            selectedTime = this.getAttribute('data-time');
+            
+            // Enable continue button
+            continueBtn.disabled = false;
+        });
+    });
+    
+    // Continue button click
+    continueBtn.addEventListener('click', function() {
+        if (selectedType === '' || consultationDate.value === '' || selectedTime === '') {
+            showError('Please complete all selections');
+            return;
+        }
+        
+        // Redirect to details page with selected options
+        window.location.href = `consultant_details.php?type=${encodeURIComponent(selectedType)}&date=${encodeURIComponent(consultationDate.value)}&time=${encodeURIComponent(selectedTime)}`;
+    });
+    
     function showError(message) {
         errorMessage.textContent = message;
         errorMessage.style.display = 'block';
