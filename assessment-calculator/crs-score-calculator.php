@@ -354,7 +354,7 @@ function createStep(step) {
                         </button>
                         <button type="button" onclick="calculateScore()" class="btn" 
                                 style="background-color: var(--color-burgundy); color: white; padding: 12px 30px; border: none; border-radius: 5px; cursor: pointer;">
-                            Calculate Score <i class="fas fa-calculator" style="margin-left: 8px;"></i>
+                            Calculate CRS Score <i class="fas fa-calculator" style="margin-left: 8px;"></i>
                         </button>
                     </div>
                 </div>
@@ -597,143 +597,128 @@ function calculateScore() {
             score += 90;
             break;
         default:
-            concerns.push('Limited formal education may affect your score');
-            recommendations.push('Consider upgrading your education level');
+            score += 30;
+            concerns.push('Lower education level reduces CRS points');
+            recommendations.push('Consider upgrading your education to increase points');
     }
 
     // Language points (max 160)
-    const clbPoints = {
-        'clb4': 0,
-        'clb5': 20,
-        'clb6': 40,
-        'clb7': 60,
-        'clb8': 80,
-        'clb9': 100,
-        'clb10plus': 120
-    };
-
-    let languageScore = 0;
-    const skills = ['speaking', 'listening', 'reading', 'writing'];
-    skills.forEach(skill => {
-        languageScore += clbPoints[formData.firstLanguage[skill]] || 0;
-    });
-    languageScore = Math.min(160, languageScore / 4); // Average and cap at 160
-    score += languageScore;
-
-    if (languageScore >= 120) {
-        strengths.push('Strong language proficiency');
-    } else if (languageScore < 80) {
+    const languagePoints = calculateLanguagePoints(formData.firstLanguage);
+    score += languagePoints;
+    if (languagePoints >= 140) {
+        strengths.push('Strong language skills significantly boost your score');
+    } else if (languagePoints < 100) {
         concerns.push('Language scores could be improved');
-        recommendations.push('Consider improving your language test scores');
+        recommendations.push('Consider retaking language tests to improve scores');
     }
 
-    // Canadian work experience (max 80)
+    // Work experience points (max 80)
     switch(formData.canadianExperience) {
-        case '5years':
+        case '5plus':
             score += 80;
             strengths.push('Maximum points for Canadian work experience');
             break;
-        case '4years':
-            score += 72;
-            break;
-        case '3years':
+        case '3to5':
             score += 64;
             break;
-        case '2years':
-            score += 56;
-            break;
-        case '1year':
+        case '1to3':
             score += 40;
             break;
         default:
-            concerns.push('Limited or no Canadian work experience');
-            recommendations.push('Gaining Canadian work experience could significantly improve your score');
+            concerns.push('Limited Canadian work experience');
+            recommendations.push('Gaining Canadian work experience could increase your score');
     }
 
-    // Additional points (max 600)
+    // Additional points
     if (formData.provincialNomination === 'yes') {
         score += 600;
-        strengths.push('Provincial nomination provides significant additional points');
+        strengths.push('Provincial nomination provides significant boost');
     }
 
-    // Job offer points
-    switch(formData.jobOffer) {
-        case 'noc00':
-            score += 200;
-            strengths.push('Senior management job offer provides additional points');
-            break;
-        case 'nocAB':
-            score += 50;
-            strengths.push('Skilled job offer provides additional points');
-            break;
-        default:
-            recommendations.push('Securing a valid job offer could increase your score');
+    if (formData.jobOffer === 'noc00') {
+        score += 200;
+        strengths.push('Job offer in NOC 00 adds significant points');
+    } else if (formData.jobOffer === 'nocAB') {
+        score += 50;
+        strengths.push('Job offer in NOC A or B adds points');
     }
 
-    // Canadian education points
-    switch(formData.canadianEducation) {
-        case 'threeOrMore':
-            score += 30;
-            strengths.push('Canadian education credentials provide additional points');
-            break;
-        case 'oneOrTwo':
-            score += 15;
-            break;
+    if (formData.canadianEducation === 'yes') {
+        score += 30;
+        strengths.push('Canadian education provides additional points');
     }
 
-    // Sibling in Canada
     if (formData.sibling === 'yes') {
         score += 15;
-        strengths.push('Having a sibling in Canada provides additional points');
+        strengths.push('Having a sibling in Canada adds points');
     }
 
-    // Display results
-    const resultsHtml = `
-        <div class="results-content" style="padding: 30px;">
-            <h2 style="color: var(--color-burgundy); margin-bottom: 20px; text-align: center;">Your CRS Score Results</h2>
-            
-            <div class="score-circle" style="
-                width: 200px;
-                height: 200px;
-                border-radius: 50%;
-                background: var(--color-burgundy);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                margin: 0 auto 30px;
-                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            ">
-                <div style="text-align: center; color: white;">
-                    <div style="font-size: 48px; font-weight: bold;">${score}</div>
-                    <div style="font-size: 16px;">CRS Points</div>
+    displayResults(score, strengths, concerns, recommendations);
+}
+
+function calculateLanguagePoints(languageScores) {
+    let points = 0;
+    const skillPoints = {
+        'clb10plus': 32,
+        'clb9': 29,
+        'clb8': 26,
+        'clb7': 23,
+        'clb6': 21,
+        'clb5': 19,
+        'clb4': 17
+    };
+
+    for (const skill in languageScores) {
+        points += skillPoints[languageScores[skill]] || 0;
+    }
+
+    return points;
+}
+
+function displayResults(score, strengths, concerns, recommendations) {
+    const resultsSection = document.getElementById('resultsSection');
+    const calculatorForm = document.getElementById('crsCalculator');
+    
+    // Hide the calculator form
+    calculatorForm.style.display = 'none';
+    
+    // Show and populate results section
+    resultsSection.style.display = 'block';
+    resultsSection.innerHTML = `
+        <div class="results-container" style="background: white; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); padding: 30px; margin-top: 30px;">
+            <div class="score-section" style="text-align: center; margin-bottom: 30px;">
+                <h2 style="color: var(--color-burgundy); margin-bottom: 10px;">Your CRS Score</h2>
+                <div class="score-circle" style="width: 150px; height: 150px; border-radius: 50%; background-color: var(--color-burgundy); color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; margin: 0 auto;">
+                    <span style="font-size: 2.5rem; font-weight: bold;">${score}</span>
+                    <span style="font-size: 0.9rem;">points</span>
                 </div>
             </div>
 
-            <div class="results-sections" style="display: grid; gap: 20px; max-width: 800px; margin: 0 auto;">
-                <div class="section" style="background: #f8f8f8; padding: 20px; border-radius: 10px;">
-                    <h3 style="color: var(--color-burgundy); margin-bottom: 15px;">
-                        <i class="fas fa-check-circle" style="color: #28a745;"></i> Strengths
-                    </h3>
-                    <ul style="list-style-type: none; padding: 0; margin: 0;">
-                        ${strengths.map(strength => `
-                            <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
-                                <i class="fas fa-check" style="color: #28a745; position: absolute; left: 0;"></i>
-                                ${strength}
-                            </li>
-                        `).join('')}
-                    </ul>
-                </div>
+            <div class="analysis-section" style="margin-bottom: 30px;">
+                <h3 style="color: var(--color-burgundy); margin-bottom: 15px;">Score Analysis</h3>
+                
+                ${strengths.length > 0 ? `
+                    <div class="strengths" style="margin-bottom: 20px;">
+                        <h4 style="color: #28a745; margin-bottom: 10px;">Strengths</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            ${strengths.map(strength => `
+                                <li style="display: flex; align-items: start; gap: 10px; margin-bottom: 8px;">
+                                    <i class="fas fa-check-circle" style="color: #28a745; margin-top: 3px;"></i>
+                                    <span>${strength}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                ` : ''}
 
                 ${concerns.length > 0 ? `
-                    <div class="section" style="background: #f8f8f8; padding: 20px; border-radius: 10px;">
-                        <h3 style="color: var(--color-burgundy); margin-bottom: 15px;">
-                            <i class="fas fa-exclamation-triangle" style="color: #ffc107;"></i> Areas of Concern
-                        </h3>
-                        <ul style="list-style-type: none; padding: 0; margin: 0;">
+                    <div class="concerns" style="margin-bottom: 20px;">
+                        <h4 style="color: #dc3545; margin-bottom: 10px;">Areas for Improvement</h4>
+                        <ul style="list-style: none; padding: 0;">
                             ${concerns.map(concern => `
-                                <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
-                                    <i class="fas fa-exclamation" style="color: #ffc107; position: absolute; left: 0;"></i>
-                                    ${concern}
+                                <li style="display: flex; align-items: start; gap: 10px; margin-bottom: 8px;">
+                                    <i class="fas fa-exclamation-circle" style="color: #dc3545; margin-top: 3px;"></i>
+                                    <span>${concern}</span>
                                 </li>
                             `).join('')}
                         </ul>
@@ -741,15 +726,13 @@ function calculateScore() {
                 ` : ''}
 
                 ${recommendations.length > 0 ? `
-                    <div class="section" style="background: #f8f8f8; padding: 20px; border-radius: 10px;">
-                        <h3 style="color: var(--color-burgundy); margin-bottom: 15px;">
-                            <i class="fas fa-lightbulb" style="color: #17a2b8;"></i> Recommendations
-                        </h3>
-                        <ul style="list-style-type: none; padding: 0; margin: 0;">
+                    <div class="recommendations">
+                        <h4 style="color: var(--color-burgundy); margin-bottom: 10px;">Recommendations</h4>
+                        <ul style="list-style: none; padding: 0;">
                             ${recommendations.map(recommendation => `
-                                <li style="margin-bottom: 10px; padding-left: 25px; position: relative;">
-                                    <i class="fas fa-arrow-right" style="color: #17a2b8; position: absolute; left: 0;"></i>
-                                    ${recommendation}
+                                <li style="display: flex; align-items: start; gap: 10px; margin-bottom: 8px;">
+                                    <i class="fas fa-lightbulb" style="color: var(--color-burgundy); margin-top: 3px;"></i>
+                                    <span>${recommendation}</span>
                                 </li>
                             `).join('')}
                         </ul>
@@ -757,25 +740,25 @@ function calculateScore() {
                 ` : ''}
             </div>
 
-            <div style="text-align: center; margin-top: 30px;">
-                <a href="consultant.php" class="btn" 
-                   style="display: inline-block; background-color: var(--color-burgundy); color: white; padding: 12px 30px; border: none; border-radius: 5px; text-decoration: none; margin-right: 15px;">
-                    <i class="fas fa-calendar-alt" style="margin-right: 8px;"></i> Book a Consultation
-                </a>
-                <button type="button" onclick="resetCalculator()" class="btn" 
-                        style="background-color: white; color: var(--color-burgundy); padding: 12px 30px; border: 1px solid var(--color-burgundy); border-radius: 5px; cursor: pointer;">
-                    <i class="fas fa-redo" style="margin-right: 8px;"></i> Start Over
+            <div class="action-buttons" style="display: flex; justify-content: center; gap: 20px; margin-top: 30px;">
+                <button onclick="resetCalculator()" class="btn" 
+                    style="background-color: white; color: var(--color-burgundy); padding: 12px 30px; border: 1px solid var(--color-burgundy); border-radius: 5px; cursor: pointer;">
+                    Calculate Again
                 </button>
+                <a href="../consultant.php" class="btn" 
+                    style="background-color: var(--color-burgundy); color: white; padding: 12px 30px; border: none; border-radius: 5px; text-decoration: none;">
+                    Book a Consultation
+                </a>
             </div>
         </div>
     `;
-
-    document.querySelector('.calculator-container').innerHTML = resultsHtml;
 }
 
 function resetCalculator() {
+    // Reset form data
     formData = {
-        age: '30',
+        maritalStatus: 'single',
+        age: 30,
         education: '',
         firstLanguage: {
             speaking: '',
@@ -783,16 +766,40 @@ function resetCalculator() {
             reading: '',
             writing: ''
         },
-        canadianExperience: '',
-        foreignExperience: '',
-        certificate: '',
-        provincialNomination: '',
-        jobOffer: '',
-        canadianEducation: '',
-        sibling: ''
+        secondLanguage: {
+            speaking: '',
+            listening: '',
+            reading: '',
+            writing: ''
+        },
+        canadianWorkExperience: '',
+        spouseEducation: '',
+        spouseLanguage: {
+            speaking: '',
+            listening: '',
+            reading: '',
+            writing: ''
+        },
+        spouseCanadianWorkExperience: '',
+        foreignWorkExperience: '',
+        certificateOfQualification: 'no',
+        provincialNomination: 'no',
+        jobOffer: 'no',
+        canadianEducation: 'no',
+        frenchLanguageSkills: 'no',
+        sibling: 'no'
     };
+
+    // Reset UI
     currentStep = 1;
-    loadStep(currentStep);
+    const resultsSection = document.getElementById('resultsSection');
+    const calculatorForm = document.getElementById('crsCalculator');
+    
+    resultsSection.style.display = 'none';
+    calculatorForm.style.display = 'block';
+    
+    loadStep(1);
+    updateProgress();
 }
 </script>
 
