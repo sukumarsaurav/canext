@@ -178,9 +178,19 @@ if ($categories && $categories->num_rows > 0) {
                                         <td><?php echo $item['id']; ?></td>
                                         <td><?php echo $item['question']; ?></td>
                                         <td><?php echo $item['display_order']; ?></td>
-                                        <td>
-                                            <a href="faq_item_edit.php?id=<?php echo $item['id']; ?>" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
-                                            <a href="faq.php?delete_question=<?php echo $item['id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this question?');"><i class="fas fa-trash"></i></a>
+                                        <td class="actions-cell">
+                                            <div class="action-buttons">
+                                                <a href="view_faq.php?id=<?php echo $item['id']; ?>" class="action-btn view-btn" title="View">
+                                                    <i class="fas fa-eye"></i>
+                                                </a>
+                                                <a href="edit_faq.php?id=<?php echo $item['id']; ?>" class="action-btn edit-btn" title="Edit">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                                <button type="button" class="action-btn delete-btn" title="Delete" 
+                                                        onclick="confirmDelete(<?php echo $item['id']; ?>, '<?php echo htmlspecialchars($item['question']); ?>')">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </div>
                                         </td>
                                     </tr>
                                     <?php endforeach; ?>
@@ -218,6 +228,12 @@ if ($categories && $categories->num_rows > 0) {
             });
         });
     });
+
+    function confirmDelete(id, question) {
+        if (confirm('Are you sure you want to delete FAQ "' + question + '"?')) {
+            window.location.href = 'delete_faq.php?id=' + id;
+        }
+    }
 </script>
 
 <?php include('includes/footer.php'); ?> 

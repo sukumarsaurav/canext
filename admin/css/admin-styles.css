@@ -806,34 +806,47 @@ button {
 
 .action-buttons {
     display: flex;
-    gap: 5px;
+    justify-content: center;
+    gap: 8px;
 }
 
 .action-btn {
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     border-radius: 4px;
-    border: none;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    color: white;
+    transition: all 0.2s ease;
+    border: none;
     cursor: pointer;
-    font-size: 0.9rem;
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 5px rgba(0,0,0,0.1);
 }
 
 .view-btn {
-    background-color: rgba(0, 123, 255, 0.1);
-    color: #007bff;
+    background-color: #3498db;
+}
+.view-btn:hover {
+    background-color: #2980b9;
 }
 
 .edit-btn {
-    background-color: rgba(40, 167, 69, 0.1);
-    color: #28a745;
+    background-color: #2ecc71;
+}
+.edit-btn:hover {
+    background-color: #27ae60;
 }
 
 .delete-btn {
-    background-color: rgba(220, 53, 69, 0.1);
-    color: #dc3545;
+    background-color: #e74c3c;
+}
+.delete-btn:hover {
+    background-color: #c0392b;
 }
 
 .admin-table-footer {
@@ -869,36 +882,93 @@ button {
     cursor: pointer;
 }
 
+.pagination-container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
 .pagination {
     display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.pagination-btn {
-    width: 35px;
-    height: 35px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #ddd;
-    background-color: white;
+    list-style: none;
+    padding: 0;
+    margin: 0;
     border-radius: 4px;
-    font-size: 0.9rem;
-    cursor: pointer;
+    overflow: hidden;
 }
 
-.pagination-btn.active {
-    background-color: var(--color-burgundy);
-    color: white;
-    border-color: var(--color-burgundy);
+.pagination li {
+    margin: 0 2px;
 }
 
-.pagination-ellipsis {
+.pagination a, .pagination span {
     display: flex;
-    justify-content: center;
     align-items: center;
-    width: 35px;
+    justify-content: center;
+    height: 36px;
+    min-width: 36px;
+    padding: 0 10px;
+    border-radius: 4px;
+    background-color: white;
+    color: #6d2323;
+    text-decoration: none;
+    font-weight: 500;
+    border: 1px solid #eaeaea;
+    transition: all 0.2s ease;
+}
+
+.pagination a:hover {
+    background-color: #f9f1e7;
+    border-color: #6d2323;
+}
+
+.pagination .active span, .pagination .active a {
+    background-color: #6d2323;
+    color: white;
+    border-color: #6d2323;
+    cursor: default;
+}
+
+.pagination .disabled span {
+    color: #ccc;
+    cursor: not-allowed;
+    background-color: #f8f8f8;
+}
+
+/* Add New Button Styling */
+.add-new-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.add-new-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background-color: #6d2323;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.add-new-btn:hover {
+    background-color: #5a1c1c;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+.add-new-btn i {
+    font-size: 14px;
+}
+
+/* Action Column Width */
+table th:last-child, 
+table td:last-child {
+    min-width: 120px;
 }
 
 /* Modal Styles */

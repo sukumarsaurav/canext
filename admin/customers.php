@@ -78,13 +78,14 @@ $result = executeQuery($sql);
                         </td>
                         <td>
                             <div class="action-buttons">
-                                <button class="btn-icon view-customer" title="View Details" data-id="<?php echo $customer['id']; ?>">
+                                <a href="view_customer.php?id=<?php echo $customer['id']; ?>" class="action-btn view-btn" title="View">
                                     <i class="fas fa-eye"></i>
-                                </button>
-                                <button class="btn-icon edit-customer" title="Edit" data-id="<?php echo $customer['id']; ?>">
+                                </a>
+                                <a href="edit_customer.php?id=<?php echo $customer['id']; ?>" class="action-btn edit-btn" title="Edit">
                                     <i class="fas fa-edit"></i>
-                                </button>
-                                <button class="btn-icon delete-customer" title="Delete" data-id="<?php echo $customer['id']; ?>">
+                                </a>
+                                <button type="button" class="action-btn delete-btn" title="Delete" 
+                                        onclick="confirmDelete(<?php echo $customer['id']; ?>, '<?php echo htmlspecialchars($customer['first_name'] . ' ' . $customer['last_name']); ?>')">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </div>

@@ -52,6 +52,11 @@ $result = executeQuery($sql);
 </div>
 
 <div class="admin-table-container">
+    <div class="add-new-container">
+        <a href="add_booking.php" class="add-new-btn">
+            <i class="fas fa-plus"></i> Add New Booking
+        </a>
+    </div>
     <table class="admin-table booking-table">
         <thead>
             <tr>
@@ -98,13 +103,14 @@ $result = executeQuery($sql);
                         </td>
                         <td>
                             <div class="action-buttons">
-                                <a href="booking_detail.php?id=<?php echo $booking['id']; ?>" class="btn-icon" title="View Details">
+                                <a href="view_booking.php?id=<?php echo $booking['id']; ?>" class="action-btn view-btn" title="View">
                                     <i class="fas fa-eye"></i>
                                 </a>
-                                <button class="btn-icon edit-booking" title="Edit" data-id="<?php echo $booking['id']; ?>">
+                                <a href="edit_booking.php?id=<?php echo $booking['id']; ?>" class="action-btn edit-btn" title="Edit">
                                     <i class="fas fa-edit"></i>
-                                </button>
-                                <button class="btn-icon delete-booking" title="Delete" data-id="<?php echo $booking['id']; ?>">
+                                </a>
+                                <button type="button" class="action-btn delete-btn" title="Delete" 
+                                        onclick="confirmDelete(<?php echo $booking['id']; ?>, '<?php echo htmlspecialchars($booking['first_name'] . ' ' . $booking['last_name']); ?>')">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </div>
@@ -121,18 +127,32 @@ $result = executeQuery($sql);
 </div>
 
 <!-- Pagination -->
-<div class="admin-pagination">
-    <button class="pagination-arrow" disabled>
-        <i class="fas fa-chevron-left"></i>
-    </button>
-    <div class="pagination-pages">
-        <button class="active">1</button>
-        <button>2</button>
-        <button>3</button>
-    </div>
-    <button class="pagination-arrow">
-        <i class="fas fa-chevron-right"></i>
-    </button>
+<div class="pagination-container">
+    <ul class="pagination">
+        <?php if ($current_page > 1): ?>
+            <li><a href="?page=1"><i class="fas fa-angle-double-left"></i></a></li>
+            <li><a href="?page=<?php echo $current_page - 1; ?>"><i class="fas fa-angle-left"></i></a></li>
+        <?php else: ?>
+            <li class="disabled"><span><i class="fas fa-angle-double-left"></i></span></li>
+            <li class="disabled"><span><i class="fas fa-angle-left"></i></span></li>
+        <?php endif; ?>
+        
+        <?php
+        for ($i = max(1, $current_page - 2); $i <= min($total_pages, $current_page + 2); $i++):
+        ?>
+            <li class="<?php echo ($i == $current_page) ? 'active' : ''; ?>">
+                <a href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
+            </li>
+        <?php endfor; ?>
+        
+        <?php if ($current_page < $total_pages): ?>
+            <li><a href="?page=<?php echo $current_page + 1; ?>"><i class="fas fa-angle-right"></i></a></li>
+            <li><a href="?page=<?php echo $total_pages; ?>"><i class="fas fa-angle-double-right"></i></a></li>
+        <?php else: ?>
+            <li class="disabled"><span><i class="fas fa-angle-right"></i></span></li>
+            <li class="disabled"><span><i class="fas fa-angle-double-right"></i></span></li>
+        <?php endif; ?>
+    </ul>
 </div>
 
 <!-- Add/Edit Booking Modal -->

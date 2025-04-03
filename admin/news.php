@@ -83,16 +83,17 @@ $result = executeQuery($sql);
                             </span>
                         </td>
                         <td class="actions-cell">
-                            <div class="actions">
-                                <a href="news_edit.php?id=<?php echo $article['id']; ?>" class="edit-news" title="Edit">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                                <a href="<?php echo '../immigration-news/' . $article['slug']; ?>" class="view-news" title="View" target="_blank">
+                            <div class="action-buttons">
+                                <a href="view_article.php?id=<?php echo $article['id']; ?>" class="action-btn view-btn" title="View">
                                     <i class="fas fa-eye"></i>
                                 </a>
-                                <a href="#" class="delete-news" data-id="<?php echo $article['id']; ?>" title="Delete">
-                                    <i class="fas fa-trash"></i>
+                                <a href="edit_article.php?id=<?php echo $article['id']; ?>" class="action-btn edit-btn" title="Edit">
+                                    <i class="fas fa-edit"></i>
                                 </a>
+                                <button type="button" class="action-btn delete-btn" title="Delete" 
+                                        onclick="confirmDelete(<?php echo $article['id']; ?>, '<?php echo htmlspecialchars($article['title']); ?>')">
+                                    <i class="fas fa-trash"></i>
+                                </button>
                             </div>
                         </td>
                     </tr>
