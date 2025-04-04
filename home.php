@@ -84,9 +84,7 @@ include('includes/header.php');
             </div>
         </div>
         
-        <div class="text-center" data-aos="fade-up" data-aos-delay="800" style="margin-top: 40px; text-align: center;">
-            <a href="visas.php" class="btn btn-primary">View All Services</a>
-        </div>
+       
     </div>
 </section>
 
