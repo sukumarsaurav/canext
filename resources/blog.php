@@ -1,5 +1,6 @@
 <?php
-$page_title = "Blog | CANEXT Immigration";
+$page_title = "Immigration Blog | CANEXT Immigration";
+$base_path = "../";
 include('../includes/header.php');
 include('../admin/includes/db_connection.php');
 

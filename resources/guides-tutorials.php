@@ -1,5 +1,6 @@
 <?php
 $page_title = "Guides & Tutorials | CANEXT Immigration";
+$base_path = "../";
 include('../includes/header.php');
 ?>
 
@@ -33,7 +34,7 @@ include('../includes/header.php');
                 <div class="guide-content" style="padding: 20px;">
                     <h3 style="color: var(--color-burgundy); margin-bottom: 15px;">Express Entry Application Guide</h3>
                     <p style="margin-bottom: 20px;">Complete guide to creating and submitting your Express Entry profile.</p>
-                    <a href="#" class="btn btn-secondary">View Guide</a>
+                    <a href="../guides/express-entry-guide.php" class="btn btn-secondary">View Guide</a>
                 </div>
             </div>
             
@@ -43,7 +44,7 @@ include('../includes/header.php');
                 <div class="guide-content" style="padding: 20px;">
                     <h3 style="color: var(--color-burgundy); margin-bottom: 15px;">Study Permit Application</h3>
                     <p style="margin-bottom: 20px;">How to apply for a Canadian study permit successfully.</p>
-                    <a href="#" class="btn btn-secondary">View Guide</a>
+                    <a href="../guides/study-permit-guide.php" class="btn btn-secondary">View Guide</a>
                 </div>
             </div>
             
@@ -53,7 +54,7 @@ include('../includes/header.php');
                 <div class="guide-content" style="padding: 20px;">
                     <h3 style="color: var(--color-burgundy); margin-bottom: 15px;">Family Sponsorship Process</h3>
                     <p style="margin-bottom: 20px;">Guide to sponsoring your family members to Canada.</p>
-                    <a href="#" class="btn btn-secondary">View Guide</a>
+                    <a href="../guides/family-sponsorship-guide.php" class="btn btn-secondary">View Guide</a>
                 </div>
             </div>
         </div>

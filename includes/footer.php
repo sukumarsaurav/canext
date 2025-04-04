@@ -126,5 +126,16 @@
         });
     </script>
    
+    <!-- JavaScript initialization -->
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+    </script>
+
+    <!-- If you have footer-specific JS files -->
+    <script src="<?php echo isset($base_path) ? $base_path : ''; ?>js/footer.js"></script>
 </body>
 </html> 
