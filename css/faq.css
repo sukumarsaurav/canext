@@ -226,7 +226,7 @@
 .cta-section {
     padding: 80px 0;
     text-align: center;
-    background-color: var(--color-burgundy);
+    background-image: linear-gradient(rgba(31, 55, 153, 0.9), rgba(109, 35, 35, 0.9)), url('../images/cta.png');
 }
 
 .cta-section .section-title {
