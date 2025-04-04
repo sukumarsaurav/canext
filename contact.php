@@ -216,7 +216,7 @@ include('includes/header.php');
 </section>
 
 <!-- Call to Action -->
-<section class="section cta-section" style="background-image: linear-gradient(rgba(109, 35, 35, 0.9), rgba(109, 35, 35, 0.9)), url('images/cta-background.jpg'); background-size: cover; background-position: center; padding: 80px 0; color: var(--color-light); text-align: center;">
+<section class="section cta-section" style="background-image: linear-gradient(rgba(109, 35, 35, 0.9), rgba(109, 35, 35, 0.9)), url('images/cta.png'); background-size: cover; background-position: center; padding: 80px 0; color: var(--color-light); text-align: center;">
     <div class="container">
         <h2 data-aos="fade-up" style="font-size: 2.2rem; margin-bottom: 20px;">Ready to Start Your Canadian Journey?</h2>
         <p data-aos="fade-up" data-aos-delay="100" style="font-size: 1.1rem; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto;">Book a consultation with one of our immigration experts today and take the first step toward your new life in Canada.</p>

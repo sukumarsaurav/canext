@@ -3,16 +3,16 @@
     --color-light: #ffffff;
     --color-dark: #333333;
     --color-cream: #FEF9E1;
-    --color-tan: #E5D0AC;
-    --color-red: #A31D1D;
-    --color-burgundy: #6D2323;
+    --color-tan: #eef8ff;
+    --color-red: #aa0027;
+    --color-burgundy: #042167;
     --font-primary: 'Montserrat', sans-serif;
     --font-secondary: 'Lora', serif;
 }
 
 /* General page styling */
 .page-header {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/resources/header-default.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/hero.png');
     background-size: cover;
     background-position: center;
     padding: 100px 0;

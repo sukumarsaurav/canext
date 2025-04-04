@@ -25,7 +25,7 @@ include('includes/header.php');
         <div class="services-grid">
             <!-- Study Permit -->
             <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="service-image" style="background-image: url('images/services/study-permit.jpg')"></div>
+                <div class="service-image" style="background-image: url('images/study-visa.png')"></div>
                 <div class="service-content">
                     <h3 class="service-title">Study Permits</h3>
                     <p class="service-description">Pursue your educational dreams at top Canadian institutions with our expert guidance on study permit applications.</p>
@@ -35,7 +35,7 @@ include('includes/header.php');
             
             <!-- Work Permit -->
             <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="service-image" style="background-image: url('images/services/work-permit.jpg')"></div>
+                <div class="service-image" style="background-image: url('images/work-visa.png')"></div>
                 <div class="service-content">
                     <h3 class="service-title">Work Permits</h3>
                     <p class="service-description">Advance your career in Canada with our specialized assistance for work permit applications and employer connections.</p>
@@ -45,7 +45,7 @@ include('includes/header.php');
             
             <!-- Express Entry -->
             <div class="service-card" data-aos="fade-up" data-aos-delay="400">
-                <div class="service-image" style="background-image: url('images/services/express-entry.jpg')"></div>
+                <div class="service-image" style="background-image: url('images/express-entry.png')"></div>
                 <div class="service-content">
                     <h3 class="service-title">Express Entry</h3>
                     <p class="service-description">Fast-track your permanent residency through Canada's Express Entry system with our proven strategies.</p>
@@ -55,7 +55,7 @@ include('includes/header.php');
             
             <!-- Provincial Nominee -->
             <div class="service-card" data-aos="fade-up" data-aos-delay="500">
-                <div class="service-image" style="background-image: url('images/services/provincial-nominee.jpg')"></div>
+                <div class="service-image" style="background-image: url('images/pro.png')"></div>
                 <div class="service-content">
                     <h3 class="service-title">Provincial Nominee</h3>
                     <p class="service-description">Leverage provincial immigration programs tailored to specific regions' needs and boost your chances of permanent residence.</p>
@@ -65,7 +65,7 @@ include('includes/header.php');
             
             <!-- Family Sponsorship -->
             <div class="service-card" data-aos="fade-up" data-aos-delay="600">
-                <div class="service-image" style="background-image: url('images/services/family-sponsorship.jpg')"></div>
+                <div class="service-image" style="background-image: url('images/family-sponsership.png')"></div>
                 <div class="service-content">
                     <h3 class="service-title">Family Sponsorship</h3>
                     <p class="service-description">Reunite with your loved ones by sponsoring family members for Canadian permanent residence with our expert guidance.</p>
@@ -75,7 +75,7 @@ include('includes/header.php');
             
             <!-- Visitor Visa -->
             <div class="service-card" data-aos="fade-up" data-aos-delay="700">
-                <div class="service-image" style="background-image: url('images/services/visitor-visa.jpg')"></div>
+                <div class="service-image" style="background-image: url('images/visitor-visa.png')"></div>
                 <div class="service-content">
                     <h3 class="service-title">Visitor Visa</h3>
                     <p class="service-description">Visit Canada for tourism, business meetings, or family visits with our comprehensive visitor visa application support.</p>
@@ -244,7 +244,7 @@ include('includes/header.php');
 
 
 <!-- Call to Action Section -->
-<section class="section cta" style="background-image: linear-gradient(rgba(109, 35, 35, 0.9), rgba(109, 35, 35, 0.9)), url('images/cta-background.jpg'); background-size: cover; background-position: center; padding: 100px 0; color: var(--color-light); text-align: center;">
+<section class="section cta" style="background-image: linear-gradient(rgba(109, 35, 35, 0.9), rgba(109, 35, 35, 0.9)), url('images/cta.png'); background-size: cover; background-position: center; padding: 100px 0; color: var(--color-light); text-align: center;">
     <div class="container">
         <h2 data-aos="fade-up" style="font-size: 2.5rem; margin-bottom: 20px;">Start Your Canadian Journey Today</h2>
         <p data-aos="fade-up" data-aos-delay="100" style="font-size: 1.2rem; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto;">Let our experts help you navigate the complex immigration process and achieve your Canadian dreams with confidence.</p>
