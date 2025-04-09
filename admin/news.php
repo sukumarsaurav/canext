@@ -286,6 +286,13 @@ $result = executeQuery($sql);
             });
         });
     });
+    
+    // Add the missing confirmDelete function
+    function confirmDelete(id, title) {
+        if (confirm('Are you sure you want to delete the article "' + title + '"?')) {
+            window.location.href = 'news_delete.php?id=' + id;
+        }
+    }
 </script>
 
 <?php include('includes/footer.php'); ?> 

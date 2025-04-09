@@ -97,7 +97,34 @@ if (!$categories || $categories->num_rows === 0) {
         
         <div class="form-group">
             <label for="content">Content</label>
-            <textarea id="content" name="content" rows="15" required><?php echo htmlspecialchars($post['content']); ?></textarea>
+            <div id="simple-editor-container">
+                <!-- Editor Tabs -->
+                <ul class="editor-tabs">
+                    <li class="active" data-tab="edit">Edit</li>
+                    <li data-tab="preview">Preview</li>
+                </ul>
+                
+                <!-- Editor Toolbar -->
+                <div class="editor-toolbar">
+                    <button type="button" data-action="bold" title="Bold"><strong>B</strong></button>
+                    <button type="button" data-action="italic" title="Italic"><em>I</em></button>
+                    <button type="button" data-action="h2" title="Heading 2">H2</button>
+                    <button type="button" data-action="h3" title="Heading 3">H3</button>
+                    <button type="button" data-action="h4" title="Heading 4">H4</button>
+                    <button type="button" data-action="link" title="Insert Link"><span>🔗</span></button>
+                    <button type="button" data-action="ul" title="Bullet List">• List</button>
+                    <button type="button" data-action="ol" title="Numbered List">1. List</button>
+                    <button type="button" data-action="p" title="Paragraph">¶</button>
+                </div>
+                
+                <!-- Editor Panels -->
+                <div id="editor-edit-panel" class="editor-panel active">
+                    <textarea id="content" name="content" rows="15" required><?php echo htmlspecialchars($post['content']); ?></textarea>
+                </div>
+                <div id="editor-preview-panel" class="editor-panel">
+                    <div id="preview-content"></div>
+                </div>
+            </div>
         </div>
         
         <div class="form-row">
@@ -149,17 +176,6 @@ if (!$categories || $categories->num_rows === 0) {
 </div>
 
 <script>
-    // Initialize TinyMCE for the content textarea
-    tinymce.init({
-        selector: '#content',
-        height: 400,
-        plugins: 'link image code table lists',
-        toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright | bullist numlist | link image | code',
-        relative_urls: false,
-        remove_script_host: false,
-        convert_urls: true
-    });
-    
     function generateSlug(text) {
         // If it's a new post or the slug field hasn't been manually edited
         if (document.getElementById('post_id').value == "0" || document.getElementById('slug').dataset.edited !== 'true') {
@@ -177,7 +193,186 @@ if (!$categories || $categories->num_rows === 0) {
         document.getElementById('slug').addEventListener('input', function() {
             this.dataset.edited = 'true';
         });
+        
+        // Simple HTML Editor
+        const textarea = document.getElementById('content');
+        const previewDiv = document.getElementById('preview-content');
+        
+        // Update preview when content changes
+        function updatePreview() {
+            previewDiv.innerHTML = textarea.value;
+        }
+        
+        // Handle formatting actions
+        function handleFormatting(action) {
+            const selStart = textarea.selectionStart;
+            const selEnd = textarea.selectionEnd;
+            const selectedText = textarea.value.substring(selStart, selEnd);
+            let replacement = '';
+            
+            switch(action) {
+                case 'bold':
+                    replacement = `<strong>${selectedText}</strong>`;
+                    break;
+                case 'italic':
+                    replacement = `<em>${selectedText}</em>`;
+                    break;
+                case 'h2':
+                    replacement = `<h2>${selectedText}</h2>`;
+                    break;
+                case 'h3':
+                    replacement = `<h3>${selectedText}</h3>`;
+                    break;
+                case 'h4':
+                    replacement = `<h4>${selectedText}</h4>`;
+                    break;
+                case 'link':
+                    const url = prompt('Enter the URL:', 'https://');
+                    if (url) {
+                        replacement = `<a href="${url}">${selectedText || url}</a>`;
+                    } else {
+                        return;
+                    }
+                    break;
+                case 'ul':
+                    if (selectedText.includes('\n')) {
+                        const lines = selectedText.split('\n');
+                        replacement = '<ul>\n' + lines.map(line => `  <li>${line}</li>`).join('\n') + '\n</ul>';
+                    } else {
+                        replacement = `<ul>\n  <li>${selectedText}</li>\n</ul>`;
+                    }
+                    break;
+                case 'ol':
+                    if (selectedText.includes('\n')) {
+                        const lines = selectedText.split('\n');
+                        replacement = '<ol>\n' + lines.map(line => `  <li>${line}</li>`).join('\n') + '\n</ol>';
+                    } else {
+                        replacement = `<ol>\n  <li>${selectedText}</li>\n</ol>`;
+                    }
+                    break;
+                case 'p':
+                    replacement = `<p>${selectedText}</p>`;
+                    break;
+            }
+            
+            textarea.value = textarea.value.substring(0, selStart) + replacement + textarea.value.substring(selEnd);
+            updatePreview();
+            
+            // Reset selection to after inserted text
+            textarea.focus();
+            const newCursorPos = selStart + replacement.length;
+            textarea.setSelectionRange(newCursorPos, newCursorPos);
+        }
+        
+        // Add event listeners for toolbar buttons
+        document.querySelectorAll('.editor-toolbar button').forEach(button => {
+            button.addEventListener('click', function() {
+                handleFormatting(this.getAttribute('data-action'));
+            });
+        });
+        
+        // Tab switching
+        document.querySelectorAll('.editor-tabs li').forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabName = this.getAttribute('data-tab');
+                
+                // Update active tab
+                document.querySelectorAll('.editor-tabs li').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Show corresponding panel
+                document.querySelectorAll('.editor-panel').forEach(panel => panel.classList.remove('active'));
+                document.getElementById(`editor-${tabName}-panel`).classList.add('active');
+                
+                // Update preview when switching to preview tab
+                if (tabName === 'preview') {
+                    updatePreview();
+                }
+            });
+        });
+        
+        // Initial preview update
+        updatePreview();
+        
+        // Update preview as user types
+        textarea.addEventListener('input', updatePreview);
     });
 </script>
+
+<style>
+    #simple-editor-container {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+    
+    .editor-tabs {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    .editor-tabs li {
+        padding: 8px 15px;
+        cursor: pointer;
+    }
+    
+    .editor-tabs li.active {
+        background-color: #fff;
+        border-bottom: 2px solid #007bff;
+    }
+    
+    .editor-toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        padding: 8px;
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    .editor-toolbar button {
+        padding: 5px 10px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+    
+    .editor-toolbar button:hover {
+        background-color: #e9ecef;
+    }
+    
+    .editor-panel {
+        display: none;
+    }
+    
+    .editor-panel.active {
+        display: block;
+    }
+    
+    #content {
+        width: 100%;
+        min-height: 400px;
+        padding: 10px;
+        border: none;
+        resize: vertical;
+        font-family: monospace;
+        line-height: 1.5;
+        box-sizing: border-box;
+    }
+    
+    #preview-content {
+        min-height: 400px;
+        padding: 10px;
+        border: none;
+        overflow-y: auto;
+        background-color: #fff;
+    }
+</style>
 
 <?php include('includes/footer.php'); ?> 

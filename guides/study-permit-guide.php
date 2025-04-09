@@ -1,5 +1,6 @@
 <?php
 $page_title = "Study Permit Application Guide | CANEXT Immigration";
+$base_path = "../";
 include('../includes/header.php');
 ?>
 

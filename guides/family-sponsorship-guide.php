@@ -1,5 +1,6 @@
 <?php
 $page_title = "Family Sponsorship Process Guide | CANEXT Immigration";
+$base_path = "../";
 include('../includes/header.php');
 ?>
 

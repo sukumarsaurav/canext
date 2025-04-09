@@ -1,6 +1,40 @@
 <?php
 $page_title = "Guides & Tutorials | CANEXT Immigration";
 
+include('../admin/includes/db_connection.php');
+
+// Get selected category (if any)
+$category_filter = '';
+$category_name = '';
+if (isset($_GET['category']) && !empty($_GET['category'])) {
+    $category_slug = sanitize($_GET['category']);
+    $category_sql = "SELECT id, name FROM guide_categories WHERE slug = '$category_slug'";
+    $category_result = executeQuery($category_sql);
+    
+    if ($category_result && $category_result->num_rows > 0) {
+        $category = $category_result->fetch_assoc();
+        $category_filter = "AND g.category_id = " . $category['id'];
+        $category_name = $category['name'];
+    }
+}
+
+// Get all guide categories
+$sql = "SELECT * FROM guide_categories WHERE guide_count > 0 ORDER BY display_order, name";
+$categories = executeQuery($sql);
+
+// Get guides
+$guides_sql = "SELECT g.*, c.name as category_name, c.slug as category_slug 
+              FROM guides g
+              JOIN guide_categories c ON g.category_id = c.id
+              WHERE g.status = 'published' $category_filter
+              ORDER BY g.publish_date DESC";
+$guides = executeQuery($guides_sql);
+
+// Function to format date
+function formatDate($date) {
+    return date('F j, Y', strtotime($date));
+}
+
 include('../includes/header.php');
 ?>
 
@@ -10,7 +44,7 @@ include('../includes/header.php');
     <div style="position: absolute; width: 200px; height: 200px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.1); bottom: -50px; right: 10%; animation: pulse 4s infinite alternate;"></div>
     <div style="position: absolute; width: 100px; height: 100px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.1); top: 30%; right: 20%; animation: pulse 3s infinite alternate;"></div>
     <div class="container">
-        <h1 data-aos="fade-up">Guides & Tutorials</h1>
+        <h1 data-aos="fade-up">Guides & Tutorials<?php echo !empty($category_name) ? ': ' . $category_name : ''; ?></h1>
         <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="100">
             <ol class="breadcrumb" style="display: flex; justify-content: center; list-style: none; padding: 0; margin: 20px 0 0 0;">
                 <li class="breadcrumb-item"><a href="../index.php" style="color: var(--color-cream);">Home</a></li>
@@ -21,43 +55,52 @@ include('../includes/header.php');
     </div>
 </section>
 
+<!-- Categories Section -->
+<?php if ($categories && $categories->num_rows > 0): ?>
+<section class="section categories-section" style="background-color: var(--color-cream);">
+    <div class="container">
+        <div class="categories-container" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin-bottom: 20px;">
+            <a href="guides-tutorials.php" class="category-pill <?php echo empty($category_filter) ? 'active' : ''; ?>" style="padding: 8px 20px; border-radius: 30px; background-color: <?php echo empty($category_filter) ? 'var(--color-burgundy)' : 'white'; ?>; color: <?php echo empty($category_filter) ? 'white' : 'var(--color-burgundy)'; ?>; text-decoration: none; font-weight: 500; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">All Guides</a>
+            
+            <?php while ($category = $categories->fetch_assoc()): ?>
+            <a href="?category=<?php echo $category['slug']; ?>" class="category-pill <?php echo isset($category_slug) && $category_slug === $category['slug'] ? 'active' : ''; ?>" style="padding: 8px 20px; border-radius: 30px; background-color: <?php echo isset($category_slug) && $category_slug === $category['slug'] ? 'var(--color-burgundy)' : 'white'; ?>; color: <?php echo isset($category_slug) && $category_slug === $category['slug'] ? 'white' : 'var(--color-burgundy)'; ?>; text-decoration: none; font-weight: 500; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                <i class="<?php echo $category['icon']; ?>" style="margin-right: 5px;"></i><?php echo $category['name']; ?>
+            </a>
+            <?php endwhile; ?>
+        </div>
+    </div>
+</section>
+<?php endif; ?>
+
 <!-- Popular Guides Section -->
 <section class="section guides-section">
     <div class="container">
-        <h2 class="section-title" data-aos="fade-up">Popular Immigration Guides</h2>
+        <h2 class="section-title" data-aos="fade-up">Immigration Guides<?php echo !empty($category_name) ? ': ' . $category_name : ''; ?></h2>
         <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Step-by-step instructions to help you navigate through various immigration processes.</p>
         
+        <?php if ($guides && $guides->num_rows > 0): ?>
         <div class="guides-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px;">
-            <!-- Guide 1 -->
+            <?php while ($guide = $guides->fetch_assoc()): ?>
             <div class="guide-card" data-aos="fade-up" style="background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-                <div class="guide-image" style="height: 200px; background-image: url('../images/resources/guide1.jpg'); background-size: cover; background-position: center;"></div>
+                <div class="guide-image" style="height: 200px; background-image: url('../<?php echo !empty($guide['featured_image']) ? $guide['featured_image'] : 'images/resources/guide-default.jpg'; ?>'); background-size: cover; background-position: center;"></div>
                 <div class="guide-content" style="padding: 20px;">
-                    <h3 style="color: var(--color-burgundy); margin-bottom: 15px;">Express Entry Application Guide</h3>
-                    <p style="margin-bottom: 20px;">Complete guide to creating and submitting your Express Entry profile.</p>
-                    <a href="../guides/express-entry-guide.php" class="btn btn-secondary">View Guide</a>
+                    <div class="guide-meta" style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                        <span style="color: var(--color-burgundy);"><?php echo formatDate($guide['publish_date']); ?></span>
+                        <span style="color: var(--color-burgundy);"><?php echo $guide['category_name']; ?></span>
+                    </div>
+                    <h3 style="color: var(--color-burgundy); margin-bottom: 15px;"><?php echo $guide['title']; ?></h3>
+                    <p style="margin-bottom: 20px;"><?php echo $guide['excerpt']; ?></p>
+                    <a href="guide-details.php?slug=<?php echo $guide['slug']; ?>" class="btn btn-secondary">View Guide</a>
                 </div>
             </div>
-            
-            <!-- Guide 2 -->
-            <div class="guide-card" data-aos="fade-up" data-aos-delay="100" style="background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-                <div class="guide-image" style="height: 200px; background-image: url('../images/resources/guide2.jpg'); background-size: cover; background-position: center;"></div>
-                <div class="guide-content" style="padding: 20px;">
-                    <h3 style="color: var(--color-burgundy); margin-bottom: 15px;">Study Permit Application</h3>
-                    <p style="margin-bottom: 20px;">How to apply for a Canadian study permit successfully.</p>
-                    <a href="../guides/study-permit-guide.php" class="btn btn-secondary">View Guide</a>
-                </div>
-            </div>
-            
-            <!-- Guide 3 -->
-            <div class="guide-card" data-aos="fade-up" data-aos-delay="200" style="background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-                <div class="guide-image" style="height: 200px; background-image: url('../images/resources/guide3.jpg'); background-size: cover; background-position: center;"></div>
-                <div class="guide-content" style="padding: 20px;">
-                    <h3 style="color: var(--color-burgundy); margin-bottom: 15px;">Family Sponsorship Process</h3>
-                    <p style="margin-bottom: 20px;">Guide to sponsoring your family members to Canada.</p>
-                    <a href="../guides/family-sponsorship-guide.php" class="btn btn-secondary">View Guide</a>
-                </div>
-            </div>
+            <?php endwhile; ?>
         </div>
+        <?php else: ?>
+        <div class="no-guides" style="text-align: center; padding: 40px 0;">
+            <h3>No guides found.</h3>
+            <p>Check back soon for new content!</p>
+        </div>
+        <?php endif; ?>
     </div>
 </section>
 
