@@ -30,6 +30,14 @@ $guides_sql = "SELECT g.*, c.name as category_name, c.slug as category_slug
               ORDER BY g.publish_date DESC";
 $guides = executeQuery($guides_sql);
 
+// Get video tutorials
+$videos_sql = "SELECT * FROM video_tutorials WHERE status = 'published' ORDER BY display_order, created_at DESC LIMIT 3";
+$videos = executeQuery($videos_sql);
+
+// Get downloadable resources
+$resources_sql = "SELECT * FROM downloadable_resources WHERE status = 'published' ORDER BY display_order, created_at DESC LIMIT 3";
+$resources = executeQuery($resources_sql);
+
 // Function to format date
 function formatDate($date) {
     return date('F j, Y', strtotime($date));
@@ -111,39 +119,64 @@ include('../includes/header.php');
         <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Watch our detailed video tutorials on various immigration topics.</p>
         
         <div class="tutorials-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px;">
-            <!-- Tutorial 1 -->
-            <div class="tutorial-card" data-aos="fade-up" style="background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-                <div class="video-placeholder" style="height: 200px; background: var(--color-burgundy); display: flex; align-items: center; justify-content: center;">
-                    <i class="fas fa-play" style="color: white; font-size: 3rem;"></i>
+            <?php if ($videos && $videos->num_rows > 0): ?>
+                <?php while($video = $videos->fetch_assoc()): ?>
+                    <div class="tutorial-card" data-aos="fade-up" style="background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                        <div class="video-placeholder" style="height: 200px; background: var(--color-burgundy); display: flex; align-items: center; justify-content: center; position: relative; <?php echo !empty($video['thumbnail']) ? 'background-image: url(../'.$video['thumbnail'].'); background-size: cover; background-position: center;' : ''; ?>">
+                            <a href="<?php echo $video['video_url']; ?>" class="video-play-btn" target="_blank" style="position: absolute; width: 60px; height: 60px; background: rgba(255,255,255,0.8); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-play" style="color: var(--color-burgundy); font-size: 1.5rem;"></i>
+                            </a>
+                            <?php if (!empty($video['duration'])): ?>
+                            <span class="video-duration" style="position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.7); color: white; padding: 2px 8px; border-radius: 4px; font-size: 12px;"><?php echo $video['duration']; ?></span>
+                            <?php endif; ?>
+                        </div>
+                        <div class="tutorial-content" style="padding: 20px;">
+                            <h3 style="color: var(--color-burgundy); margin-bottom: 15px;"><?php echo $video['title']; ?></h3>
+                            <p><?php echo $video['description']; ?></p>
+                        </div>
+                    </div>
+                <?php endwhile; ?>
+            <?php else: ?>
+                <!-- Tutorial 1 -->
+                <div class="tutorial-card" data-aos="fade-up" style="background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                    <div class="video-placeholder" style="height: 200px; background: var(--color-burgundy); display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-play" style="color: white; font-size: 3rem;"></i>
+                    </div>
+                    <div class="tutorial-content" style="padding: 20px;">
+                        <h3 style="color: var(--color-burgundy); margin-bottom: 15px;">CRS Score Calculator Tutorial</h3>
+                        <p>Learn how to calculate your Comprehensive Ranking System score.</p>
+                    </div>
                 </div>
-                <div class="tutorial-content" style="padding: 20px;">
-                    <h3 style="color: var(--color-burgundy); margin-bottom: 15px;">CRS Score Calculator Tutorial</h3>
-                    <p>Learn how to calculate your Comprehensive Ranking System score.</p>
+                
+                <!-- Tutorial 2 -->
+                <div class="tutorial-card" data-aos="fade-up" data-aos-delay="100" style="background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                    <div class="video-placeholder" style="height: 200px; background: var(--color-burgundy); display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-play" style="color: white; font-size: 3rem;"></i>
+                    </div>
+                    <div class="tutorial-content" style="padding: 20px;">
+                        <h3 style="color: var(--color-burgundy); margin-bottom: 15px;">Document Checklist Review</h3>
+                        <p>Detailed walkthrough of required documents for immigration.</p>
+                    </div>
                 </div>
-            </div>
-            
-            <!-- Tutorial 2 -->
-            <div class="tutorial-card" data-aos="fade-up" data-aos-delay="100" style="background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-                <div class="video-placeholder" style="height: 200px; background: var(--color-burgundy); display: flex; align-items: center; justify-content: center;">
-                    <i class="fas fa-play" style="color: white; font-size: 3rem;"></i>
+                
+                <!-- Tutorial 3 -->
+                <div class="tutorial-card" data-aos="fade-up" data-aos-delay="200" style="background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                    <div class="video-placeholder" style="height: 200px; background: var(--color-burgundy); display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-play" style="color: white; font-size: 3rem;"></i>
+                    </div>
+                    <div class="tutorial-content" style="padding: 20px;">
+                        <h3 style="color: var(--color-burgundy); margin-bottom: 15px;">Interview Preparation</h3>
+                        <p>Tips and strategies for immigration interviews.</p>
+                    </div>
                 </div>
-                <div class="tutorial-content" style="padding: 20px;">
-                    <h3 style="color: var(--color-burgundy); margin-bottom: 15px;">Document Checklist Review</h3>
-                    <p>Detailed walkthrough of required documents for immigration.</p>
-                </div>
-            </div>
-            
-            <!-- Tutorial 3 -->
-            <div class="tutorial-card" data-aos="fade-up" data-aos-delay="200" style="background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-                <div class="video-placeholder" style="height: 200px; background: var(--color-burgundy); display: flex; align-items: center; justify-content: center;">
-                    <i class="fas fa-play" style="color: white; font-size: 3rem;"></i>
-                </div>
-                <div class="tutorial-content" style="padding: 20px;">
-                    <h3 style="color: var(--color-burgundy); margin-bottom: 15px;">Interview Preparation</h3>
-                    <p>Tips and strategies for immigration interviews.</p>
-                </div>
-            </div>
+            <?php endif; ?>
         </div>
+        
+        <?php if ($videos && $videos->num_rows > 0): ?>
+        <div class="text-center" data-aos="fade-up" style="margin-top: 30px;">
+            <a href="video-tutorials.php" class="btn btn-secondary">View All Tutorials</a>
+        </div>
+        <?php endif; ?>
     </div>
 </section>
 
@@ -152,30 +185,47 @@ include('../includes/header.php');
     <div class="container">
         <h2 class="section-title" data-aos="fade-up">Downloadable Resources</h2>
         <div class="resources-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px;">
-            <!-- Resource 1 -->
-            <div class="resource-card" data-aos="fade-up" style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-                <i class="fas fa-file-pdf" style="font-size: 2rem; color: var(--color-burgundy); margin-bottom: 20px;"></i>
-                <h3 style="color: var(--color-burgundy); margin-bottom: 15px;">Document Checklist</h3>
-                <p style="margin-bottom: 20px;">Comprehensive checklist of required documents for various visa applications.</p>
-                <a href="#" class="btn btn-secondary">Download PDF</a>
-            </div>
-            
-            <!-- Resource 2 -->
-            <div class="resource-card" data-aos="fade-up" data-aos-delay="100" style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-                <i class="fas fa-file-excel" style="font-size: 2rem; color: var(--color-burgundy); margin-bottom: 20px;"></i>
-                <h3 style="color: var(--color-burgundy); margin-bottom: 15px;">Cost Calculator</h3>
-                <p style="margin-bottom: 20px;">Excel sheet to calculate immigration costs and living expenses.</p>
-                <a href="#" class="btn btn-secondary">Download Excel</a>
-            </div>
-            
-            <!-- Resource 3 -->
-            <div class="resource-card" data-aos="fade-up" data-aos-delay="200" style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-                <i class="fas fa-file-word" style="font-size: 2rem; color: var(--color-burgundy); margin-bottom: 20px;"></i>
-                <h3 style="color: var(--color-burgundy); margin-bottom: 15px;">Letter Templates</h3>
-                <p style="margin-bottom: 20px;">Templates for reference letters, statements of purpose, and more.</p>
-                <a href="#" class="btn btn-secondary">Download Word</a>
-            </div>
+            <?php if ($resources && $resources->num_rows > 0): ?>
+                <?php while($resource = $resources->fetch_assoc()): ?>
+                    <div class="resource-card" data-aos="fade-up" style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                        <i class="<?php echo $resource['icon']; ?>" style="font-size: 2rem; color: var(--color-burgundy); margin-bottom: 20px;"></i>
+                        <h3 style="color: var(--color-burgundy); margin-bottom: 15px;"><?php echo $resource['title']; ?></h3>
+                        <p style="margin-bottom: 20px;"><?php echo $resource['description']; ?></p>
+                        <a href="../<?php echo $resource['file_path']; ?>" class="btn btn-secondary" download>Download <?php echo strtoupper($resource['file_type']); ?></a>
+                    </div>
+                <?php endwhile; ?>
+            <?php else: ?>
+                <!-- Resource 1 -->
+                <div class="resource-card" data-aos="fade-up" style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                    <i class="fas fa-file-pdf" style="font-size: 2rem; color: var(--color-burgundy); margin-bottom: 20px;"></i>
+                    <h3 style="color: var(--color-burgundy); margin-bottom: 15px;">Document Checklist</h3>
+                    <p style="margin-bottom: 20px;">Comprehensive checklist of required documents for various visa applications.</p>
+                    <a href="#" class="btn btn-secondary">Download PDF</a>
+                </div>
+                
+                <!-- Resource 2 -->
+                <div class="resource-card" data-aos="fade-up" data-aos-delay="100" style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                    <i class="fas fa-file-excel" style="font-size: 2rem; color: var(--color-burgundy); margin-bottom: 20px;"></i>
+                    <h3 style="color: var(--color-burgundy); margin-bottom: 15px;">Cost Calculator</h3>
+                    <p style="margin-bottom: 20px;">Excel sheet to calculate immigration costs and living expenses.</p>
+                    <a href="#" class="btn btn-secondary">Download Excel</a>
+                </div>
+                
+                <!-- Resource 3 -->
+                <div class="resource-card" data-aos="fade-up" data-aos-delay="200" style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                    <i class="fas fa-file-word" style="font-size: 2rem; color: var(--color-burgundy); margin-bottom: 20px;"></i>
+                    <h3 style="color: var(--color-burgundy); margin-bottom: 15px;">Letter Templates</h3>
+                    <p style="margin-bottom: 20px;">Templates for reference letters, statements of purpose, and more.</p>
+                    <a href="#" class="btn btn-secondary">Download Word</a>
+                </div>
+            <?php endif; ?>
         </div>
+        
+        <?php if ($resources && $resources->num_rows > 0): ?>
+        <div class="text-center" data-aos="fade-up" style="margin-top: 30px;">
+            <a href="downloadable-resources.php" class="btn btn-secondary">View All Resources</a>
+        </div>
+        <?php endif; ?>
     </div>
 </section>
 

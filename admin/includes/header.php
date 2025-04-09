@@ -84,6 +84,18 @@ $current_page = basename($_SERVER['PHP_SELF']);
                             <span>Guides Manager</span>
                         </a>
                     </li>
+                    <li class="<?php echo $current_page === 'video_tutorials.php' || $current_page === 'video_tutorial_edit.php' ? 'active' : ''; ?>">
+                        <a href="video_tutorials.php">
+                            <i class="fas fa-video"></i>
+                            <span>Video Tutorials</span>
+                        </a>
+                    </li>
+                    <li class="<?php echo $current_page === 'downloadable_resources.php' || $current_page === 'resource_edit.php' ? 'active' : ''; ?>">
+                        <a href="downloadable_resources.php">
+                            <i class="fas fa-file-download"></i>
+                            <span>Downloadable Resources</span>
+                        </a>
+                    </li>
                     <li class="<?php echo $current_page === 'faq.php' ? 'active' : ''; ?>">
                         <a href="faq.php">
                             <i class="fas fa-question-circle"></i>

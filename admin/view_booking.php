@@ -6,7 +6,7 @@ include('includes/db_connection.php');
 $booking_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
 // Get booking details from database
-$sql = "SELECT a.*, CONCAT(c.first_name, ' ', c.last_name) as customer_name, c.email as customer_email, c.phone as customer_phone
+$sql = "SELECT a.*, CONCAT(c.first_name, ' ', c.last_name) as customer_name, c.email as customer_email, c.phone as customer_phone, c.id as customer_id
         FROM appointments a 
         LEFT JOIN customers c ON a.email = c.email
         WHERE a.id = $booking_id";
@@ -106,7 +106,7 @@ $notes_result = executeQuery($sql_notes);
         <div class="admin-card">
             <div class="admin-card-header">
                 <h2>Customer Information</h2>
-                <?php if ($booking['customer_id']): ?>
+                <?php if (isset($booking['customer_id']) && !empty($booking['customer_id'])): ?>
                 <div class="header-actions">
                     <a href="view_customer.php?id=<?php echo $booking['customer_id']; ?>" class="btn-text">
                         <i class="fas fa-external-link-alt"></i> View Customer Profile
@@ -115,7 +115,7 @@ $notes_result = executeQuery($sql_notes);
                 <?php endif; ?>
             </div>
             <div class="admin-card-body">
-                <?php if ($booking['customer_id']): ?>
+                <?php if (isset($booking['customer_id']) && !empty($booking['customer_id'])): ?>
                 <div class="detail-section">
                     <div class="detail-row">
                         <div class="detail-group">
