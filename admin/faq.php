@@ -133,9 +133,11 @@ if ($categories && $categories->num_rows > 0) {
                                 <td><i class="<?php echo $category['icon']; ?>"></i> <?php echo $category['icon']; ?></td>
                                 <td><?php echo isset($items[$category['id']]) ? count($items[$category['id']]) : 0; ?></td>
                                 <td><?php echo $category['display_order']; ?></td>
-                                <td>
-                                    <a href="faq_category_edit.php?id=<?php echo $category['id']; ?>" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
-                                    <a href="faq.php?delete_category=<?php echo $category['id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this category? All associated questions will also be deleted.');"><i class="fas fa-trash"></i></a>
+                                <td class="actions-cell">
+                                <div class="action-buttons">
+                                    <a href="faq_category_edit.php?id=<?php echo $category['id']; ?>" class="action-btn edit-btn"><i class="fas fa-edit"></i></a>
+                                    <a href="faq.php?delete_category=<?php echo $category['id']; ?>" class="action-btn delete-btn" onclick="return confirm('Are you sure you want to delete this category? All associated questions will also be deleted.');"><i class="fas fa-trash"></i></a>
+                                    </div>
                                 </td>
                             </tr>
                             <?php endwhile; ?>

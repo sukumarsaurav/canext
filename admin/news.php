@@ -84,10 +84,10 @@ $result = executeQuery($sql);
                         </td>
                         <td class="actions-cell">
                             <div class="action-buttons">
-                                <a href="view_article.php?id=<?php echo $article['id']; ?>" class="action-btn view-btn" title="View">
+                                <a href="../news/<?php echo $article['slug']; ?>" class="action-btn view-btn" title="View" target="_blank">
                                     <i class="fas fa-eye"></i>
                                 </a>
-                                <a href="edit_article.php?id=<?php echo $article['id']; ?>" class="action-btn edit-btn" title="Edit">
+                                <a href="news_edit.php?id=<?php echo $article['id']; ?>" class="action-btn edit-btn" title="Edit">
                                     <i class="fas fa-edit"></i>
                                 </a>
                                 <button type="button" class="action-btn delete-btn" title="Delete" 
@@ -172,6 +172,24 @@ $result = executeQuery($sql);
         </div>
     </div>
 </div>
+
+<style>
+.status-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+}
+.status-published {
+    background-color: #e1f3e8;
+    color: #1e7e34;
+}
+.status-draft {
+    background-color: #f8f9fa;
+    color: #6c757d;
+}
+</style>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {

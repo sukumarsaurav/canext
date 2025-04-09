@@ -151,10 +151,12 @@ $posts = executeQuery($sql);
                                     </span>
                                 </td>
                                 <td><?php echo date('M j, Y', strtotime($post['publish_date'])); ?></td>
-                                <td>
-                                    <a href="../blog/<?php echo $post['slug']; ?>" class="btn btn-sm btn-info" target="_blank"><i class="fas fa-eye"></i></a>
-                                    <a href="blog_post_edit.php?id=<?php echo $post['id']; ?>" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
-                                    <a href="blog.php?delete_post=<?php echo $post['id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this post?');"><i class="fas fa-trash"></i></a>
+                                <td class="actions-cell">
+                                    <div class="action-buttons">
+                                        <a href="../blog/<?php echo $post['slug']; ?>" class="action-btn view-btn" target="_blank" title="View"><i class="fas fa-eye"></i></a>
+                                        <a href="blog_post_edit.php?id=<?php echo $post['id']; ?>" class="action-btn edit-btn" title="Edit"><i class="fas fa-edit"></i></a>
+                                        <a href="blog.php?delete_post=<?php echo $post['id']; ?>" class="action-btn delete-btn" title="Delete" onclick="return confirm('Are you sure you want to delete this post?');"><i class="fas fa-trash"></i></a>
+                                    </div>
                                 </td>
                             </tr>
                             <?php endwhile; ?>
@@ -195,9 +197,11 @@ $posts = executeQuery($sql);
                                 <td><i class="<?php echo $category['icon']; ?>"></i></td>
                                 <td><?php echo $category['post_count']; ?></td>
                                 <td><?php echo $category['display_order']; ?></td>
-                                <td>
-                                    <a href="blog_category_edit.php?id=<?php echo $category['id']; ?>" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
-                                    <a href="blog.php?delete_category=<?php echo $category['id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this category? All associated posts will also be deleted.');"><i class="fas fa-trash"></i></a>
+                                <td class="actions-cell">
+                                    <div class="action-buttons">
+                                        <a href="blog_category_edit.php?id=<?php echo $category['id']; ?>" class="action-btn edit-btn" title="Edit"><i class="fas fa-edit"></i></a>
+                                        <a href="blog.php?delete_category=<?php echo $category['id']; ?>" class="action-btn delete-btn" title="Delete" onclick="return confirm('Are you sure you want to delete this category? All associated posts will also be deleted.');"><i class="fas fa-trash"></i></a>
+                                    </div>
                                 </td>
                             </tr>
                             <?php endwhile; ?>
