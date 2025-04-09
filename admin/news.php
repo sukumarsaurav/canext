@@ -84,7 +84,7 @@ $result = executeQuery($sql);
                         </td>
                         <td class="actions-cell">
                             <div class="action-buttons">
-                                <a href="../news/<?php echo $article['slug']; ?>" class="action-btn view-btn" title="View" target="_blank">
+                                <a href="../immigration-news/<?php echo $article['slug']; ?>" class="action-btn view-btn" title="View" target="_blank">
                                     <i class="fas fa-eye"></i>
                                 </a>
                                 <a href="news_edit.php?id=<?php echo $article['id']; ?>" class="action-btn edit-btn" title="Edit">
