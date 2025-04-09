@@ -131,10 +131,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
                     </div>
                 </div>
                 <div class="admin-header-right">
-                    <div class="admin-notifications">
-                        <i class="fas fa-bell"></i>
-                        <span class="notification-count">3</span>
-                    </div>
+                   
                     <div class="admin-profile-dropdown">
                         <button class="profile-dropdown-btn">
                             <i class="fas fa-user-circle"></i>
