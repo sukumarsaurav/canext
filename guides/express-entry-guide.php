@@ -1,6 +1,5 @@
 <?php
 $page_title = "Express Entry Application Guide | CANEXT Immigration";
-$base_path = "../";
 include('../includes/header.php');
 ?>
 

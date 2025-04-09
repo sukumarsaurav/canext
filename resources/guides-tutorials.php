@@ -1,6 +1,6 @@
 <?php
 $page_title = "Guides & Tutorials | CANEXT Immigration";
-$base_path = "../";
+
 include('../includes/header.php');
 ?>
 

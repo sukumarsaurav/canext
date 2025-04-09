@@ -1,6 +1,5 @@
 <?php
 $page_title = "Frequently Asked Questions | CANEXT Immigration";
-$base_path = "../";
 include('../includes/header.php');
 include('../admin/includes/db_connection.php');
 

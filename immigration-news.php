@@ -20,7 +20,7 @@ if (count($path_parts) >= 2 && $path_parts[0] === 'immigration-news') {
     // For debugging
     // echo "<pre>No slug found in: " . print_r($path_parts, true) . "</pre>";
     
-    // Otherwise, redirect to the news listing page
+    // Otherwise, redirect to the news listing page - using normalized path
     header('Location: resources/immigration-news.php');
     exit;
 }

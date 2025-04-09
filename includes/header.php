@@ -21,8 +21,8 @@ if (!isset($base_url)) {
     }
 }
 
-// Define base path - default to empty string if not set
-$base = isset($base_path) ? $base_path : '';
+// Define base path - default to use base_url if not explicitly set
+$base = isset($base_path) ? $base_path : $base_url;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +33,7 @@ $base = isset($base_path) ? $base_path : '';
     <meta name="description" content="Expert Canadian immigration consultancy services for study permits, work permits, express entry, and more.">
     
     <!-- Favicon -->
-    <link rel="icon" href="<?php echo $base; ?>favicon.ico" type="image/x-icon">
+    <link rel="icon" href="<?php echo $base; ?>/favicon.ico" type="image/x-icon">
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -50,24 +50,24 @@ $base = isset($base_path) ? $base_path : '';
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="<?php echo $base; ?>css/styles.css">
-    <link rel="stylesheet" href="<?php echo $base; ?>css/animations.css">
-    <link rel="stylesheet" href="<?php echo $base; ?>css/header.css">
-    <link rel="stylesheet" href="<?php echo $base; ?>css/resources.css">
-    <link rel="stylesheet" href="<?php echo $base; ?>css/assessment-drawer.css">
-    <link rel="stylesheet" href="<?php echo isset($base) ? $base : ''; ?>css/news.css">
-    <link rel="stylesheet" href="<?php echo $base; ?>css/faq.css">
+    <link rel="stylesheet" href="<?php echo $base; ?>/css/styles.css">
+    <link rel="stylesheet" href="<?php echo $base; ?>/css/animations.css">
+    <link rel="stylesheet" href="<?php echo $base; ?>/css/header.css">
+    <link rel="stylesheet" href="<?php echo $base; ?>/css/resources.css">
+    <link rel="stylesheet" href="<?php echo $base; ?>/css/assessment-drawer.css">
+    <link rel="stylesheet" href="<?php echo $base; ?>/css/news.css">
+    <link rel="stylesheet" href="<?php echo $base; ?>/css/faq.css">
         
     <!-- Libraries -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 
     <!-- Load utils.js before other scripts -->
-    <script src="<?php echo $base; ?>js/utils.js"></script>
+    <script src="<?php echo $base; ?>/js/utils.js"></script>
 
     <!-- Your custom scripts should come after utils.js -->
-    <script src="<?php echo $base; ?>js/main.js" defer></script>
-    <script src="<?php echo $base; ?>js/resources.js" defer></script>
+    <script src="<?php echo $base; ?>/js/main.js" defer></script>
+    <script src="<?php echo $base; ?>/js/resources.js" defer></script>
 </head>
 <body>
     <!-- Drawer Overlay -->
