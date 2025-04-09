@@ -123,9 +123,12 @@ $current_page = basename($_SERVER['PHP_SELF']);
             <!-- Top Header -->
             <div class="admin-header">
                 <div class="admin-header-left">
-                    <button id="mobile-menu-toggle" class="mobile-toggle-btn">
+                    <button id="mobile-menu-toggle" class="mobile-toggle-btn" aria-label="Toggle Navigation">
                         <i class="fas fa-bars"></i>
                     </button>
+                    <div class="page-title">
+                        <h2><?php echo ucfirst(str_replace(array('.php', '_'), array('', ' '), $current_page)); ?></h2>
+                    </div>
                 </div>
                 <div class="admin-header-right">
                     <div class="admin-notifications">

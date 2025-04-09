@@ -5,6 +5,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const sidebar = document.querySelector('.admin-sidebar');
     const main = document.querySelector('.admin-main');
     
+    // Create overlay for mobile sidebar
+    const overlay = document.createElement('div');
+    overlay.className = 'sidebar-overlay';
+    document.body.appendChild(overlay);
+    
+    // Desktop sidebar toggle
     if (sidebarToggle) {
         sidebarToggle.addEventListener('click', function() {
             sidebar.classList.toggle('collapsed');
@@ -12,17 +18,40 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // Mobile menu toggle
     if (mobileMenuToggle) {
         mobileMenuToggle.addEventListener('click', function() {
             sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
         });
     }
     
-    // Close sidebar if clicked outside on mobile
-    document.addEventListener('click', function(event) {
+    // Function to handle window resize
+    function handleResize() {
         const isMobile = window.innerWidth < 992;
-        if (isMobile && !sidebar.contains(event.target) && event.target !== mobileMenuToggle) {
+        
+        if (!isMobile) {
+            // Reset mobile specific classes when on desktop
             sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        }
+    }
+    
+    // Run on load and on resize
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    
+    // Close sidebar when overlay is clicked
+    overlay.addEventListener('click', function() {
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+    });
+    
+    // Close sidebar if ESC key is pressed
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
         }
     });
     
