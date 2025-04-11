@@ -29,7 +29,7 @@ include('includes/header.php');
                 <div class="service-content">
                     <h3 class="service-title">Study Permits</h3>
                     <p class="service-description">Pursue your educational dreams at top Canadian institutions with our expert guidance on study permit applications.</p>
-                    <a href="visas.php?type=study" class="btn btn-secondary">Learn More</a>
+                    <a href="visa-types/Study-Permit.php" class="btn btn-secondary">Learn More</a>
                 </div>
             </div>
             
@@ -39,7 +39,7 @@ include('includes/header.php');
                 <div class="service-content">
                     <h3 class="service-title">Work Permits</h3>
                     <p class="service-description">Advance your career in Canada with our specialized assistance for work permit applications and employer connections.</p>
-                    <a href="visas.php?type=work" class="btn btn-secondary">Learn More</a>
+                    <a href="visa-types/Work-Permit.php" class="btn btn-secondary">Learn More</a>
                 </div>
             </div>
             
@@ -49,7 +49,7 @@ include('includes/header.php');
                 <div class="service-content">
                     <h3 class="service-title">Express Entry</h3>
                     <p class="service-description">Fast-track your permanent residency through Canada's Express Entry system with our proven strategies.</p>
-                    <a href="visas.php?type=express-entry" class="btn btn-secondary">Learn More</a>
+                    <a href="visa-types/Express-Entry-visa.php" class="btn btn-secondary">Learn More</a>
                 </div>
             </div>
             
@@ -59,7 +59,7 @@ include('includes/header.php');
                 <div class="service-content">
                     <h3 class="service-title">Provincial Nominee</h3>
                     <p class="service-description">Leverage provincial immigration programs tailored to specific regions' needs and boost your chances of permanent residence.</p>
-                    <a href="visas.php?type=provincial-nominee" class="btn btn-secondary">Learn More</a>
+                    <a href="visa-types/Provincial-Nominee.php" class="btn btn-secondary">Learn More</a>
                 </div>
             </div>
             
@@ -69,7 +69,7 @@ include('includes/header.php');
                 <div class="service-content">
                     <h3 class="service-title">Family Sponsorship</h3>
                     <p class="service-description">Reunite with your loved ones by sponsoring family members for Canadian permanent residence with our expert guidance.</p>
-                    <a href="visas.php?type=family-sponsorship" class="btn btn-secondary">Learn More</a>
+                    <a href="visa-types/Family-Sponsorship.php" class="btn btn-secondary">Learn More</a>
                 </div>
             </div>
             
@@ -79,7 +79,7 @@ include('includes/header.php');
                 <div class="service-content">
                     <h3 class="service-title">Visitor Visa</h3>
                     <p class="service-description">Visit Canada for tourism, business meetings, or family visits with our comprehensive visitor visa application support.</p>
-                    <a href="visas.php?type=visitor-visa" class="btn btn-secondary">Learn More</a>
+                    <a href="visa-types/Visitor-Visa.php" class="btn btn-secondary">Learn More</a>
                 </div>
             </div>
         </div>
