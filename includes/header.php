@@ -126,6 +126,10 @@ $base = isset($base_path) ? $base_path : $base_url;
                     <div class="drawer-submenu-title">Study Permit Checker</div>
                     <div class="drawer-submenu-description">Verify your eligibility for a Canadian study permit</div>
                 </a>
+                <a href="<?php echo $base; ?>/assessment-calculator/immigration-pathway-calculator.php" class="drawer-submenu-item">
+                    <div class="drawer-submenu-title">Immigration Pathway Calculator</div>
+                    <div class="drawer-submenu-description">Find your ideal pathway to Canada based on your circumstances</div>
+                </a>
             </div>
             
             <div class="drawer-item" data-target="resources-submenu">
@@ -221,6 +225,10 @@ $base = isset($base_path) ? $base_path : $base_url;
                             <a href="<?php echo $base; ?>/assessment-calculator/study-permit-checker.php" class="dropdown-item">
                                 <div class="mega-menu-title">Study Permit Checker</div>
                                 <div class="mega-menu-description">Verify your eligibility for a Canadian study permit</div>
+                            </a>
+                            <a href="<?php echo $base; ?>/assessment-calculator/immigration-pathway-calculator.php" class="dropdown-item">
+                                <div class="mega-menu-title">Immigration Pathway Calculator</div>
+                                <div class="mega-menu-description">Find your ideal pathway to Canada based on your circumstances</div>
                             </a>
                         </div>
                     </li>

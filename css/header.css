@@ -1,7 +1,7 @@
 :root {
-    --color-cream: #FEF9E1;
-    --color-gold: #eef8ff;
-    --color-red: #aa0027;
+    --color-cream: #FFFFFF;
+    --color-gold: #FFFFFF;
+    --color-red: #042167;
     --color-burgundy: #042167;
     --color-dark: #333333;
     --color-light: #FFFFFF;
@@ -44,7 +44,7 @@ ul {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1600px;
     margin: 0 auto;
     padding: 0 20px;
 }

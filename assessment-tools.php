@@ -29,6 +29,7 @@ include('includes/header.php');
             <a href="#eligibility" class="btn btn-primary">Visa Eligibility Calculator</a>
             <a href="#crs" class="btn btn-primary">CRS Score Calculator</a>
             <a href="#study" class="btn btn-primary">Study Permit Checker</a>
+            <a href="#pathway" class="btn btn-primary">Immigration Pathway Calculator</a>
         </div>
     </div>
 </section>
@@ -201,6 +202,50 @@ include('includes/header.php');
             <div id="study-result" style="margin-top: 30px; padding: 20px; border-radius: 5px; display: none;">
                 <!-- Results will be displayed here via JavaScript -->
             </div>
+        </div>
+    </div>
+</section>
+
+<!-- Immigration Pathway Calculator -->
+<section id="pathway" class="section calculator-section" style="background-color: var(--color-cream);">
+    <div class="container">
+        <div class="section-header" style="text-align: center; margin-bottom: 50px;">
+            <h2 class="section-title" data-aos="fade-up">Immigration Pathway Calculator</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Find your ideal pathway to Canada based on your specific circumstances</p>
+        </div>
+        
+        <div class="calculator-container" style="max-width: 800px; margin: 0 auto; background-color: var(--color-light); padding: 40px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);" data-aos="fade-up" data-aos-delay="200">
+            <div class="tool-description" style="margin-bottom: 30px; text-align: center;">
+                <p>Our Immigration Pathway Calculator helps you determine the most suitable immigration route for your specific situation. Whether your goal is to study, work, become a permanent resident, start a business, or simply visit Canada, this tool will guide you toward the right path.</p>
+            </div>
+            
+            <div class="pathway-categories" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px;">
+                <div class="pathway-card" style="border: 2px solid var(--color-burgundy); border-radius: 10px; padding: 20px; text-align: center;">
+                    <i class="fas fa-graduation-cap" style="font-size: 2.5rem; color: var(--color-burgundy); margin-bottom: 15px;"></i>
+                    <h3 style="margin-bottom: 10px;">Study in Canada</h3>
+                    <p style="font-size: 0.9rem; margin-bottom: 15px;">Determine your eligibility for Canadian student permits and SDS streams</p>
+                </div>
+                
+                <div class="pathway-card" style="border: 2px solid var(--color-burgundy); border-radius: 10px; padding: 20px; text-align: center;">
+                    <i class="fas fa-briefcase" style="font-size: 2.5rem; color: var(--color-burgundy); margin-bottom: 15px;"></i>
+                    <h3 style="margin-bottom: 10px;">Work in Canada</h3>
+                    <p style="font-size: 0.9rem; margin-bottom: 15px;">Explore various work permit options including LMIA-based and open work permits</p>
+                </div>
+                
+                <div class="pathway-card" style="border: 2px solid var(--color-burgundy); border-radius: 10px; padding: 20px; text-align: center;">
+                    <i class="fas fa-home" style="font-size: 2.5rem; color: var(--color-burgundy); margin-bottom: 15px;"></i>
+                    <h3 style="margin-bottom: 10px;">Permanent Residence</h3>
+                    <p style="font-size: 0.9rem; margin-bottom: 15px;">Check pathways to permanent residency through Express Entry, PNP, and other programs</p>
+                </div>
+                
+                <div class="pathway-card" style="border: 2px solid var(--color-burgundy); border-radius: 10px; padding: 20px; text-align: center;">
+                    <i class="fas fa-plane" style="font-size: 2.5rem; color: var(--color-burgundy); margin-bottom: 15px;"></i>
+                    <h3 style="margin-bottom: 10px;">Visit Canada</h3>
+                    <p style="font-size: 0.9rem; margin-bottom: 15px;">Find information on visitor visas, eTAs, and travel requirements</p>
+                </div>
+            </div>
+            
+            <a href="assessment-calculator/immigration-pathway-calculator.php" class="btn btn-primary" style="width: 100%; display: block; text-align: center;">Start Pathway Calculator</a>
         </div>
     </div>
 </section>
